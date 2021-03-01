@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/backend_api/chibre-manager" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/front_mobile/chibre-manager" vcs="Git" />
-  </component>
-</project>
