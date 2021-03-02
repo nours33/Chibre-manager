@@ -1,0 +1,3 @@
+class PlayerAnnounces < ApplicationRecord
+
+end
