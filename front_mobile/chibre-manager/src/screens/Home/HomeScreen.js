@@ -25,7 +25,12 @@ export default function HomeScreen() {
           <Button mode="contained" onPress={() => navigation.navigate('Création de la partie')}>Commencer une partie</Button>
         </View>
         <View>
-          <Button mode="contained" >Reprendre une partie</Button>
+          <Button
+            mode="contained"
+            // onPress={() => }
+          >
+            Reprendre une partie
+          </Button>
         </View>
       </View>
     </View>
