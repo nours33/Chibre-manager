@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :announces, only: [:index]
+      resources :games, only: [:index, :create]
+      resources :teams, only: [:index, :create]
+      resources :players, only: [:index]
+      resources :player_announces, only: [:index]
+    end
+  end
 end
