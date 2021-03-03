@@ -18,8 +18,61 @@ const useFetch = async (url, token) => {
 
 
 
-export const CreateGameAndTeam = async () => {
-  const url = `${host}/api/v1/auth/sign_out`;
-  const header = await _setHeaders('DELETE', {});
-  return fetch(url, header);
+export const CreateGame = async () => {
+  const method = 'POST'
+  const url = `${host}/api/v1/games`;
+  return _fetch(url, method);
+};
+
+export const CreateTeam = async () => {
+  const method = 'POST'
+  const url = `${host}/api/v1/teams`;
+  return _fetch(url, method, body);
+};
+
+
+export const _fetch = async (url, method, body) => {
+  const httpRequest = await fetch(url, {
+    method: method,
+    body: body
+  }).catch((error) => {
+    handleHttpError(error);
+  });
+  // In case of fetch timeout
+  if (httpRequest !== undefined) {
+    const result = await httpRequest.json();
+
+    if (httpRequest.status === 200) {
+      if (result.data) {
+        return result.data;
+      }
+      return result;
+    }
+    if (httpRequest.status === 401) {
+      await store.dispatch(logout());
+      return null;
+    }
+    if (httpRequest.status === 404) {
+      handleHttpError("Page introuvable. Veuillez prendre contact avec l'administrateur.");
+    }
+    if (httpRequest.status >= 500) {
+      handleHttpError('Oops ! Une erreur est survenue, notre équipe technique a été informée!');
+    }
+    if (httpRequest.status >= 422) {
+      handleHttpError(result.message);
+    }
+  }
+  return null;
+};
+
+export const handleHttpError = (errors) => {
+  if (errors instanceof Error) {
+    console.log(errors.toString(), "red");
+  } else if (Array.isArray(errors)) {
+    errors.map((error) => {
+      console.log(errors.toString(), "red");
+    });
+  } else {
+    console.log(errors.toString(), "red");
+  }
 };
