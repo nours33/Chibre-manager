@@ -1,7 +1,12 @@
-Structure de fichier
+# Structure des fichiers
+ ## Expo
 
-Guide d'installation
 
-Explique que y a un .env
+
+# Guide d'installation
+
+
+
+# Env
 
 
