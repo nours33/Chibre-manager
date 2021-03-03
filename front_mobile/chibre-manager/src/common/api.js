@@ -15,19 +15,27 @@ const useFetch = async (url, token) => {
   return json
 }
 
-
+export const GetGame = async () => {
+  const method = 'GET'
+  const url = `${host}/api/v1/games`;
+  return _fetch(url, method);
+};
 
 
 export const CreateGame = async () => {
   const method = 'POST'
   const url = `${host}/api/v1/games`;
-  return _fetch(url, method);
+  let response = await _fetch(url, method);
+  console.log(response)
+  return response
 };
 
-export const CreateTeam = async () => {
+export const CreateTeamAPI = async (body) => {
+  console.log(body)
   const method = 'POST'
   const url = `${host}/api/v1/teams`;
-  return _fetch(url, method, body);
+  let response = await _fetch(url, method, body);
+  console.log(response)
 };
 
 
