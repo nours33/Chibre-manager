@@ -1,12 +1,15 @@
-// Importation des bibliothèque
+/**
+ * The external dependencies
+ */
 import React from 'react';
 import {Image, Text, View} from 'react-native';
-import {Button} from "react-native-paper";
+/**
+ * The Internal dependencies
+ */
 import {useNavigation} from "@react-navigation/native";
-
+import {Button} from "react-native-paper";
+import {CreateGame} from "../../common/api";
 import {styles} from './style'
-
-
 
 
 export default function HomeScreen() {
@@ -22,12 +25,16 @@ export default function HomeScreen() {
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.buttonSingleContainer}>
-          <Button mode="contained" onPress={() => navigation.navigate('Création de la partie')}>Commencer une partie</Button>
+          <Button
+            mode="contained"
+            onPress={() => {navigation.navigate('CreateTeam1'); CreateGame(); }}
+          >
+            Commencer une partie
+          </Button>
         </View>
         <View>
           <Button
             mode="contained"
-            // onPress={() => }
           >
             Reprendre une partie
           </Button>
