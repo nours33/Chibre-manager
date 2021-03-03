@@ -1,7 +1,7 @@
 /**
  * The external dependencies
  */
-import React from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Image, Text, View} from "react-native";
 
 /**
@@ -10,14 +10,47 @@ import {Image, Text, View} from "react-native";
 import {styles} from "./style";
 import {Button, TextInput} from "react-native-paper";
 import {useNavigation} from "@react-navigation/native";
+import {GameContext} from "../../../App";
 
 const CreateTeam = (props) => {
-  const [playerOne, setPlayerOne] = React.useState('');
-  const [playerTwo, setPlayerTwo] = React.useState('');
-  const [team, setTeam] = React.useState('');
+  const { team1, setTeam1, team2, setTeam2 } = useContext(GameContext);
+
+
+
+  const [playerOne, setPlayerOne] = useState('');
+  const [playerTwo, setPlayerTwo] = useState('');
+  const [team, setTeam] = useState('');
+  const [data, setData] = useState('');
+
 
   const navigation = useNavigation();
 
+
+
+
+
+  const test = () => {
+    if (props.currentScreen == 'Team1') {
+      setTeam1({...team1, team1: team, player1: playerOne, player2: playerTwo});
+    }
+    else {
+      setTeam2({...team2, team2: team, player3: playerOne, player4: playerTwo});
+    }
+  }
+
+  // useEffect(  () => {
+  //   test();
+  // }, [playerOne, playerTwo, team]);
+  //
+  // let formData = new FormData();
+  //
+  //
+  // const DataBody = () => {
+  //   formData.append('player1', playerOne);
+  //   formData.append('player2', playerTwo);
+  //   formData.append('teamname', team);
+  //   setData(formData)
+  // }
 
   return (
     <View style={styles.container}>
@@ -62,7 +95,9 @@ const CreateTeam = (props) => {
         </View>
       </View>
       <View>
-        <Button mode="contained" onPress={() => navigation.navigate('CreateTeam2')} >Suivant</Button>
+        <Button mode="contained" onPress={() => {navigation.navigate(props.routeNavigation); test()}} >Suivant</Button>
+      </View>
+      <View>
       </View>
     </View>
   )
