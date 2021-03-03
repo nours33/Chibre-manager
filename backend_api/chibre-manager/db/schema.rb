@@ -18,15 +18,22 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
   create_table "announces", force: :cascade do |t|
     t.string "name"
     t.integer "points"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.integer "status"
+    t.integer "round", default: 0
     t.integer "atout"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "player_announces", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.bigint "player_id"
     t.bigint "announce_id"
     t.index ["announce_id"], name: "index_player_announces_on_announce_id"
@@ -37,13 +44,17 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
     t.string "name"
     t.integer "first_to_play"
     t.integer "distributor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.bigint "team_id"
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
-    t.integer "points"
+    t.integer "points", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.bigint "game_id"
     t.index ["game_id"], name: "index_teams_on_game_id"
   end
