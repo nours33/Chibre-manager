@@ -71,17 +71,19 @@ export default function GameScreen({route}) {
       </View>
     )
   }
+
+
   if (gameData.teams == undefined) {
     return (
       <View>
         <ActivityIndicator animating={true} color={Colors.red800} />
->>>>>>> Stashed changes
+
       </View>
 
 
 
 
-    </View>
+
   )
 
 }
