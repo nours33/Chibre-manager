@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.integer "first_to_play"
-    t.integer "distributor"
+    t.boolean "first_to_play"
+    t.boolean "distributor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "team_id"
