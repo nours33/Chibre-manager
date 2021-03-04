@@ -16,17 +16,6 @@ import {styles} from './style'
 export default function HomeScreen() {
   const navigation = useNavigation();
 
-
-
-
-  const test2 = async () => {
-    // const test = await CreateGame()
-    navigation.navigate('CreateTeam1', {
-      // test2: test.game.id
-    })
-  };
-
-
   return (
 
       <View style={styles.container}>
@@ -41,7 +30,7 @@ export default function HomeScreen() {
             <Button
               mode="contained"
               onPress={() => {
-                test2();
+                navigation.navigate('CreateTeam1')
               }}
             >
               Commencer une partie

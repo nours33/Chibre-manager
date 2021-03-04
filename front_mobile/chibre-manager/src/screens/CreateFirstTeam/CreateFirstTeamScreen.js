@@ -4,16 +4,12 @@ import {View} from "react-native";
 import {styles} from './style'
 
 import CreateTeam from "../../components/create-team";
-import {GameContext} from "../../../App";
 
 
 
 
-export default function CreateFirstTeamScreen({route}) {
 
-  const { teams, setTeams } = useContext(GameContext);
-
-
+export default function CreateFirstTeamScreen() {
 
   return (
     <View style={styles.container}>

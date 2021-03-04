@@ -28,11 +28,24 @@ export const styles = StyleSheet.create({
     width: width/1.07,
   },
   whiteFont: {
-    color: 'white'
+    color: 'white',
+    textAlign: 'center'
   },
   text: {
     textAlign: 'center',
-    fontSize: 40,
+    fontSize: 30,
   },
+
+  littleText: {
+    fontSize: 12,
+  },
+  playerContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  img:{
+    width: 20,
+    height: 20,
+  }
 
 });
