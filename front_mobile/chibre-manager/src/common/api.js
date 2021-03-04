@@ -1,42 +1,22 @@
 import {host} from './constants'
 
 
-const useFetch = async (url, token) => {
-  const response = await fetch(url, {
-    headers: {
-      Authorization: 'Bearer' + token
-      // Authorization: 'Bearer' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGliZXJldGFmb3JjZS5jaCIsImlhdCI6MTYxMjM2NDU0OSwibmJmIjoxNjEyMzY0NTQ5LCJleHAiOjE2MTI5NjkzNDksImRhdGEiOnsidXNlciI6eyJpZCI6IjgifX19.U76d9UNN5qTHKd6phJpi4rbSvmpTAmEcjuogejAsaMw'
-    }
-  });
-  if (!response.ok) {
-    return;
-  }
-  const json = await response.json()
-  return json
-}
 
-export const GetGame = async () => {
+export const GetGame = async (id) => {
   const method = 'GET'
-  const url = `${host}/api/v1/games`;
-  return _fetch(url, method);
-};
-
-
-export const CreateGame = async () => {
-  const method = 'POST'
-  const url = `${host}/api/v1/games`;
+  const url = `${host}/api/v1/games/${id}`;
   let response = await _fetch(url, method);
-  console.log(response)
   return response
 };
 
-export const CreateTeamAPI = async (body) => {
-  console.log(body)
+
+export const CreateGame = async (body) => {
   const method = 'POST'
-  const url = `${host}/api/v1/teams`;
+  const url = `${host}/api/v1/games`;
   let response = await _fetch(url, method, body);
-  console.log(response)
+  return response
 };
+
 
 
 export const _fetch = async (url, method, body) => {

@@ -20,13 +20,9 @@ const CreateTeam = (props) => {
   const [playerOne, setPlayerOne] = useState('');
   const [playerTwo, setPlayerTwo] = useState('');
   const [team, setTeam] = useState('');
-  const [data, setData] = useState('');
 
 
   const navigation = useNavigation();
-
-
-
 
 
   const test = () => {
@@ -38,19 +34,7 @@ const CreateTeam = (props) => {
     }
   }
 
-  // useEffect(  () => {
-  //   test();
-  // }, [playerOne, playerTwo, team]);
-  //
-  // let formData = new FormData();
-  //
-  //
-  // const DataBody = () => {
-  //   formData.append('player1', playerOne);
-  //   formData.append('player2', playerTwo);
-  //   formData.append('teamname', team);
-  //   setData(formData)
-  // }
+
 
   return (
     <View style={styles.container}>
