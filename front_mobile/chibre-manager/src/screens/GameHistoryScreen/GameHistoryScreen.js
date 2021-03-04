@@ -17,7 +17,7 @@ export default function GameHistoryScreen() {
     const games = await GetGame()
     setGameData(games)
   }
-
+  console.log(gameData)
   return (
     <View>
       <GameHistory GameData={gameData}/>
