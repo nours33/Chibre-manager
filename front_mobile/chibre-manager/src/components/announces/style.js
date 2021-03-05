@@ -4,12 +4,7 @@ const {width, height} = Dimensions.get('window')
 
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
+
 
 
   cardContent: {

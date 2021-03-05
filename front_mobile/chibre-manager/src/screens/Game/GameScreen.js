@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react'
-import {View, Text, Image, TouchableOpacity} from 'react-native'
+import React, {useEffect, useContext} from 'react'
+import {View, Text, Pressable} from 'react-native'
 
 import {styles} from "./style";
 
 import { Card, Title, Paragraph, Colors, ActivityIndicator } from 'react-native-paper';
 import {GetGame} from "../../common/api";
 import TeamView from "../../components/team-view";
+
+import {GameContext} from "../../../App";
 
 
 
@@ -16,82 +18,82 @@ export default function GameScreen({route}) {
   const [gameData, setGameData] = React.useState([]);
 
 
-  const [teamOne, setTeamOne] = React.useState([]);
-  const [teamTwo, setTeamTwo] = React.useState('');
 
-  const [player1, setPlayer1] = React.useState('');
-  const [Player2, setPlayer2] = React.useState('');
+  const [announcesTeam1, setAnnouncesTeam1] = React.useState([]);
+  const [pointsTeam1, setPointsTeam1] = React.useState([]);
 
 
-  const [test, setTest] = React.useState(0);
-
+  const [announcesTeam2, setAnnouncesTeam2] = React.useState([]);
+  const [pointsTeam2, setPointsTeam2] = React.useState([]);
 
 
 
-  const [teamOnePoints, setTeamOnePoints] = React.useState('');
-  const [teamTwoPoints, setTeamTwoPoints] = React.useState('');
 
 
-  const [roundPoints, setRoundPoints] = React.useState(0);
 
-
+  const {pointsManche} = useContext(GameContext);
 
   const getGameAPI = async (id) => {
     const DataGame = await GetGame(id)
     setGameData(DataGame)
+
   };
 
+  const currentAnnouncesTeam2 = () =>  {
+    const announces = [];
+    setPointsTeam2(gameData.teams[1].points)
+    gameData.teams[1].player.forEach((player) => {
+      player.announce.forEach((announce) => {
+        if (gameData.rounds == announce.rounds) {
+          announces.push(announce)
+        }
+      })
+    })
+    setAnnouncesTeam2(announces);
+  };
 
+  const currentAnnouncesTeam1 = () =>  {
+    const announces = [];
+    setPointsTeam1(gameData.teams[1].points)
+    gameData.teams[0].player.forEach((player) => {
+      player.announce.forEach((announce) => {
+        if (gameData.rounds == announce.rounds) {
+          announces.push(announce)
+        }
+      })
+    })
+    setAnnouncesTeam1(announces);
 
-
-
-
-  // const setParams = () => {
-  //   if (gameData.teams !== undefined) {
-  //     gameData.teams[0].name
-  //     setTeamOne({
-  //       ...teamOne,
-  //       name: gameData.teams[0].name,
-  //       point: gameData.teams[0].points,
-  //     });
-  //   }
-  //   else {
-  //     return null
-  //   }
-  // }
-
+  };
 
 
   useEffect(  () => {
     getGameAPI(game.game.id);
-    // setParams();
-  }, []);
+  }, [announcesTeam1]);
+
+
+
 
   if (gameData.teams !== undefined) {
 
 
-
-
     return (
       <View style={styles.container}>
-        <View style={styles.block}>
+        <Pressable onPress={() => {currentAnnouncesTeam1(); currentAnnouncesTeam2()}}>
+          <Text>Refresh</Text>
+        </Pressable>
 
-          <View style={styles.test}>
-            <Card style={styles.card}>
-              <Card.Content style={styles.cardContent}>
-                <Paragraph style={styles.whiteFont}>Atout de la manche :</Paragraph>
-                <Title style={styles.whiteFont}></Title>
-              </Card.Content>
-            </Card>
+        <Pressable onPress={() => {}}>
+          <Text>manche suivante</Text>
+        </Pressable>
+
+
+        <View style={styles.cardContainer}>
+          <View style={styles.card}>
+          <Text>Atout de la manche: </Text>
           </View>
-
-          <View>
-            <Card style={styles.card}>
-              <Card.Content style={styles.cardContent}>
-                <Paragraph style={styles.whiteFont}>Qui a distribuer ? </Paragraph>
-                <Title style={styles.whiteFont}></Title>
-              </Card.Content>
-            </Card>
+          <View style={styles.card}>
+            <Text>Distributeur ?: </Text>
           </View>
         </View>
 
@@ -101,6 +103,9 @@ export default function GameScreen({route}) {
         team={gameData.teams[0]}
         player1={gameData.teams[0].player[0]}
         player2={gameData.teams[0].player[1]}
+        announcesTeam={announcesTeam1}
+        pointsTotal={pointsTeam1}
+        pointsManche={pointsManche}
       />
 
 
@@ -109,6 +114,9 @@ export default function GameScreen({route}) {
           team={gameData.teams[1]}
           player1={gameData.teams[1].player[0]}
           player2={gameData.teams[1].player[1]}
+          announcesTeam={announcesTeam2}
+          pointsTotal={pointsTeam2}
+          pointsManche={157 - pointsManche <= 0 ? 0 : 157 - pointsManche}
         />
       </View>
     )

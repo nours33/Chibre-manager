@@ -19,19 +19,21 @@ import AnnouncesScreen from "./src/screens/AnnouncesSreen/AnnouncesScreen";
 
 
 export   const GameContext = createContext({
-
   team1: [],
   setTeam1: () => {},
   team2: [],
   setTeam2: () => {},
+  pointsManche: 0,
+  setPointsManche: () => {},
 });
 
 
 export default function App() {
   const [team1, setTeam1] = useState();
   const [team2, setTeam2] = useState();
+  const [pointsManche, setPointsManche] = React.useState(0);
 
-  const value = {team1, setTeam1, team2, setTeam2}
+  const value = {team1, setTeam1, team2, setTeam2, pointsManche, setPointsManche}
 
 
 

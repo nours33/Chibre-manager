@@ -1,101 +1,132 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 
-import {View, Text, TouchableOpacity, Image } from 'react-native'
-import {Card, Paragraph, Title} from "react-native-paper";
+import {View, Text, TouchableOpacity, Image, FlatList, Modal, TextInput, Pressable } from 'react-native'
+
 
 import {styles} from './style'
 import {useNavigation} from "@react-navigation/native";
 
+
+import {GameContext} from "../../../App";
 
 
 
 const TeamView = (props) => {
 
   const navigation = useNavigation();
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+
+  const {pointsManche, setPointsManche} = useContext(GameContext);
+
+
   return (
 
     <View style={styles.container}>
+
+
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modal}>
+            <Text style={styles.bigTitle}> {props.team.name}</Text>
+            <TextInput
+              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+              keyboardType={"numeric"}
+              value={pointsManche}
+              onChangeText={pointsManche => setPointsManche(pointsManche)}
+            />
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Back</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+
+
+
       <View>
 
         <View>
-          <Text style={styles.text}> {props.team.name}</Text>
+          <Text style={styles.bigTitle}> {props.team.name}</Text>
         </View>
 
-        <View style={styles.block}>
-          <View style={styles.test}>
-            <Card style={styles.card}>
-              <Card.Content style={styles.cardContent}>
-                <Paragraph style={styles.whiteFont}>Points Total : {props.team.points}</Paragraph>
-                <Title style={styles.whiteFont}></Title>
-              </Card.Content>
-            </Card>
-          </View>
 
-          <View>
-            <Card style={styles.card}>
-              <Card.Content style={styles.cardContent}>
-                <Paragraph style={styles.whiteFont}>Points manches : 0 </Paragraph>
-                <Title style={styles.whiteFont}></Title>
-              </Card.Content>
-            </Card>
+        <View style={styles.cardContainer}>
+          <View style={styles.card}>
+            <Text style={{color: 'white'}}>Points Total: {props.pointsTotal}  </Text>
           </View>
+          <TouchableOpacity    onPress={() => setModalVisible(true)}>
+            <View style={styles.card}>
+              <Text style={{color: 'white'}}>Points manche : {props.pointsManche}</Text>
+            </View>
+          </TouchableOpacity>
         </View>
 
-        <View style={styles.block}>
-          <View style={styles.test}>
-            <Card style={styles.bigCard}>
-              <Card.Content style={styles.cardContent}>
-                <View>
-                  <Paragraph style={styles.whiteFont}>Annonces :</Paragraph>
-                  <Title style={styles.whiteFont}></Title>
-                </View>
-              </Card.Content>
-            </Card>
+
+        <View style={styles.cardContainer}>
+          <View style={styles.bigCard}>
+            <Text style={{color: 'white'}}>Annonces: </Text>
+            <FlatList
+              keyExtractor={(post) => post.id.toString()}
+              data={props.announcesTeam}
+              renderItem={({item}) => {
+                return (
+                    <Text style={{color: 'white'}}>
+                      {item.name}
+                    </Text>
+                )
+              }}
+            />
           </View>
         </View>
 
-        <View style={styles.block}>
-          <View style={styles.test}>
-            <Card style={styles.card}>
-              <Card.Content style={styles.cardContent}>
-                <View style={styles.playerContainer}>
-                  <Paragraph style={styles.whiteFont}>{props.player1.name}</Paragraph>
-                  <Title style={{...styles.whiteFont, ...styles.littleText}}>Ajouter une annonce</Title>
-                  <View stlye={styles.containerImg}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Announces', {
-                      playerid: props.player1.id,
-                      gameid: props.game.id
-                      })
-                    }>
-                      <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </Card.Content>
-            </Card>
+
+
+
+
+
+        <View style={styles.cardContainer}>
+          <View style={styles.card}>
+            <Text style={{color: 'white'}}>{props.player1.name} </Text>
+            <Text style={{color: 'white'}}>Ajouter une annonce </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Announces', {
+              playerid: props.player1.id,
+              gameid: props.game.id,
+              teamid: props.team.id,
+              gameRound: props.game.rounds
+            })
+            }>
+              <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
+            </TouchableOpacity>
           </View>
 
-          <View>
-            <Card style={styles.card}>
-              <Card.Content style={styles.cardContent}>
-                <View style={styles.playerContainer}>
-                  <Paragraph style={styles.whiteFont}>{props.player2.name }</Paragraph>
-                  <Title style={{...styles.whiteFont, ...styles.littleText}}>Ajouter une annonce</Title>
-                  <View>
-                    <TouchableOpacity onPress={() => navigation.navigate('Announces', {
-                      playerid: props.player2.id,
-                      gameid: props.game.id
-                      })}
-                    >
-                      <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              </Card.Content>
-            </Card>
+          <View style={styles.card}>
+            <Text style={{color: 'white'}}>{props.player2.name} </Text>
+            <Text style={{color: 'white'}}>Ajouter une annonce </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Announces', {
+              playerid: props.player2.id,
+              gameid: props.game.id,
+              teamid: props.team.id,
+              gameRound: props.game.rounds
+            })
+            }>
+              <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
+            </TouchableOpacity>
           </View>
-
         </View>
+
+
 
       </View>
     </View>

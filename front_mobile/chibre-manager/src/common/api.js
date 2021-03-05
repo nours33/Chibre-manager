@@ -17,6 +17,14 @@ export const CreateGame = async (body) => {
   return response
 };
 
+export const createAnnounce = async (body) => {
+  const method = 'POST'
+  const url = `${host}/api/v1/player_announces`;
+  let response = await _fetch(url, method, body);
+  console.log(response)
+  return response
+};
+
 
 
 export const _fetch = async (url, method, body) => {
