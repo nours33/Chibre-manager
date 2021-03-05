@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :games, only: [:index, :create, :show]
       resources :teams, only: [:index, :create]
       resources :players, only: [:index, :create]
-      resources :player_announces, only: [:index]
+      resources :player_announces, only: [:index, :create]
     end
   end
 end

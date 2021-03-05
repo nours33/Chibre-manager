@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
   create_table "announces", force: :cascade do |t|
     t.string "name"
     t.integer "points"
+    t.integer "rounds"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -25,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.integer "status"
-    t.integer "round", default: 0
+    t.integer "rounds", default: 1
     t.integer "atout"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

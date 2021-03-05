@@ -1,5 +1,5 @@
 json.array! @games do |game|
-  json.extract! game, :id, :name, :status, :created_at
+  json.extract! game, :id, :name, :status, :rounds, :created_at
 
   json.teams game.teams do |team|
     json.extract! team, :id, :name, :points
