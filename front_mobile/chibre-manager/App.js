@@ -14,6 +14,7 @@ import CreateFirstTeam from "./src/screens/CreateFirstTeam/CreateFirstTeamScreen
 import CreateSecondTeamScreen from "./src/screens/CreateSecondTeam/CreateSecondTeamScreen";
 import GameScreen from "./src/screens/Game/GameScreen";
 import WhoStartScreen from "./src/screens/WhoStartScreen/WhoStartScreen";
+import AnnouncesScreen from "./src/screens/AnnouncesSreen/AnnouncesScreen";
 
 
 
@@ -51,6 +52,7 @@ export default function App() {
           <Stack.Screen name="CreateTeam2" component={CreateSecondTeamScreen} />
           <Stack.Screen name="WhoStart" component={WhoStartScreen} />
           <Stack.Screen name="Game" component={GameScreen} />
+          <Stack.Screen name="Announces" component={AnnouncesScreen} />
           <Stack.Screen name="Historical" component={GameHistoryScreen} />
         </Stack.Navigator>
       </NavigationContainer>
