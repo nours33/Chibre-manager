@@ -1,3 +1,4 @@
+# Extrait les données de la valeur @game pour les mettre dans un tableau JSON.
 json.array! @games do |game|
   json.extract! game, :id, :name, :status, :rounds, :created_at
 

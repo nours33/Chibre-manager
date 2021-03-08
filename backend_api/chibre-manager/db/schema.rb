@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
     t.string "name"
     t.boolean "first_to_play"
     t.boolean "distributor"
+    t.string "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "team_id"

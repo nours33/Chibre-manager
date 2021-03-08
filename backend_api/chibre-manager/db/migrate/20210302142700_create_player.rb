@@ -4,6 +4,7 @@ class CreatePlayer < ActiveRecord::Migration[6.0]
       t.string :name
       t.boolean :first_to_play
       t.boolean :distributor
+      t.string :position
 
       t.timestamps
     end
