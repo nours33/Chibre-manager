@@ -11,6 +11,9 @@ import {GameContext} from "../../../App";
 
 
 
+
+
+
 const TeamView = (props) => {
 
   const navigation = useNavigation();
@@ -19,6 +22,43 @@ const TeamView = (props) => {
 
 
   const {pointsManche, setPointsManche} = useContext(GameContext);
+
+
+  const TestView = () => {
+
+    if (props.clickable == true) {
+      return (
+        <TouchableOpacity    onPress={() => setModalVisible(true)}>
+          <View style={styles.card}>
+            <Text style={{color: 'white'}}>Points manche : {props.pointsManche}</Text>
+          </View>
+        </TouchableOpacity>
+      )
+    }
+    else {
+      return (
+        <View style={styles.card}>
+          <Text style={{color: 'white'}}>Points manche : {props.pointsManche}</Text>
+        </View>
+      )
+    }
+
+  }
+
+  // const DistributorOrNot = () => {
+  //   console.log(props.player1)
+  //   if (props.player1.first_to_play) {
+  //    return (
+  //      <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
+  //    )
+  //   }
+  //   if (props.player2.first_to_play) {
+  //     return (
+  //       <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
+  //     )
+  //
+  //   }
+  // }
 
 
   return (
@@ -66,11 +106,7 @@ const TeamView = (props) => {
           <View style={styles.card}>
             <Text style={{color: 'white'}}>Points Total: {props.pointsTotal}  </Text>
           </View>
-          <TouchableOpacity    onPress={() => setModalVisible(true)}>
-            <View style={styles.card}>
-              <Text style={{color: 'white'}}>Points manche : {props.pointsManche}</Text>
-            </View>
-          </TouchableOpacity>
+          <TestView />
         </View>
 
 
@@ -83,7 +119,7 @@ const TeamView = (props) => {
               renderItem={({item}) => {
                 return (
                     <Text style={{color: 'white'}}>
-                      {item.name}
+                      {item.name} ({item.points})
                     </Text>
                 )
               }}
@@ -99,6 +135,7 @@ const TeamView = (props) => {
         <View style={styles.cardContainer}>
           <View style={styles.card}>
             <Text style={{color: 'white'}}>{props.player1.name} </Text>
+            {/*<DistributorOrNot/>*/}
             <Text style={{color: 'white'}}>Ajouter une annonce </Text>
             <TouchableOpacity onPress={() => navigation.navigate('Announces', {
               playerid: props.player1.id,
@@ -118,7 +155,8 @@ const TeamView = (props) => {
               playerid: props.player2.id,
               gameid: props.game.id,
               teamid: props.team.id,
-              gameRound: props.game.rounds
+              gameRound: props.game.rounds,
+              setAnnounce: props.setAnnounce
             })
             }>
               <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />

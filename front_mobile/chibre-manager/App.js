@@ -31,7 +31,7 @@ export   const GameContext = createContext({
 export default function App() {
   const [team1, setTeam1] = useState();
   const [team2, setTeam2] = useState();
-  const [pointsManche, setPointsManche] = React.useState(0);
+  const [pointsManche, setPointsManche] = React.useState(1);
 
   const value = {team1, setTeam1, team2, setTeam2, pointsManche, setPointsManche}
 

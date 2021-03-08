@@ -25,6 +25,7 @@ const CreateTeam = (props) => {
   const navigation = useNavigation();
 
 
+
   const test = () => {
     if (props.currentScreen == 'Team1') {
       setTeam1({...team1, team1: team, player1: playerOne, player2: playerTwo});
@@ -33,7 +34,6 @@ const CreateTeam = (props) => {
       setTeam2({...team2, team2: team, player3: playerOne, player4: playerTwo});
     }
   }
-
 
 
   return (

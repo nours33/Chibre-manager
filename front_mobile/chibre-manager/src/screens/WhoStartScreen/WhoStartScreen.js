@@ -12,20 +12,14 @@ import {styles} from './style'
 export default function WhoStartScreen() {
   const navigation = useNavigation();
 
-
   const { team1, setTeam1, team2 } = useContext(GameContext);
 
   const [checked, setChecked] = React.useState('first');
   const [data, setData] = React.useState([]);
 
-
   let formData = new FormData();
 
-
-
   const dataGame = () => {
-    setTeam1({...team1, first_player: checked});
-
     formData.append('team_name1', team1.team1);
     formData.append('team_name2', team2.team2);
 
@@ -34,13 +28,17 @@ export default function WhoStartScreen() {
     formData.append('player3', team2.player3);
     formData.append('player4', team2.player4);
 
-    formData.append('first_to_play', team1.first_player);
+    formData.append('first_to_play', checked);
+
 
     setData(formData)
   }
 
   const test2 = async () => {
+
+
     const test = await CreateGame(data)
+
     navigation.navigate('Game', {
       game: test
     })

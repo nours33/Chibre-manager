@@ -1,7 +1,5 @@
 import {host} from './constants'
 
-
-
 export const GetGame = async (id) => {
   const method = 'GET'
   const url = `${host}/api/v1/games/${id}`;
@@ -9,10 +7,17 @@ export const GetGame = async (id) => {
   return response
 };
 
+export const updateGame = async (id, body) => {
+  const method = 'PUT'
+  const url = `${host}/api/v1/games/${id}`;
+  let response = await _fetch(url, method, body);
+  return response
+}
 
 export const CreateGame = async (body) => {
   const method = 'POST'
   const url = `${host}/api/v1/games`;
+  console.log(body)
   let response = await _fetch(url, method, body);
   return response
 };
@@ -24,8 +29,6 @@ export const createAnnounce = async (body) => {
   console.log(response)
   return response
 };
-
-
 
 export const _fetch = async (url, method, body) => {
   const httpRequest = await fetch(url, {

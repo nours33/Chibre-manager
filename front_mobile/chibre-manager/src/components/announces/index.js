@@ -6,7 +6,7 @@ import {Card, RadioButton, Title} from "react-native-paper";
 import {styles} from "./style"
 import {createAnnounce} from "../../common/api";
 
-
+import {useNavigation} from "@react-navigation/native";
 
 
 const Announces = (props) => {
@@ -14,34 +14,24 @@ const Announces = (props) => {
   let formData = new FormData();
   const [data, setData] = React.useState([]);
 
-
-
+  const navigation = useNavigation();
 
   const dataAnnounce = () => {
-
 
     formData.append('name', props.name);
     formData.append('points', props.points);
     formData.append('playerid', props.playerid);
     formData.append('rounds', props.gameRound);
 
-
-
     setData(formData)
   };
 
-
-
-
-
   const test2 = async () => {
 
-
     const test = await createAnnounce(data)
-    console.log(props)
 
+    navigation.navigate('Game')
   };
-
 
   useEffect(  () => {
     dataAnnounce();
