@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
     t.string "name"
     t.integer "status"
     t.integer "rounds", default: 1
-    t.integer "atout"
+    t.string "atout"
+    t.integer "points", default: 0
+    t.boolean "winner", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
     t.string "name"
     t.boolean "first_to_play"
     t.boolean "distributor"
-    t.string "position"
+    t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "team_id"
@@ -55,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.integer "points", default: 0
+    t.boolean "winner", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "game_id"

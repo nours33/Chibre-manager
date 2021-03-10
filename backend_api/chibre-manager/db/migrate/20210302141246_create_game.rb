@@ -4,7 +4,9 @@ class CreateGame < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :status
       t.integer :rounds, default: 1
-      t.integer :atout
+      t.string :atout
+      t.integer :points, default: 0
+      t.boolean :winner, default: false
 
       t.timestamps
     end
