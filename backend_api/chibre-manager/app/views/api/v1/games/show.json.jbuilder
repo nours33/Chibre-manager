@@ -1,6 +1,6 @@
-json.extract! @game, :id, :name, :status, :rounds, :created_at
+json.extract! @game, :id, :name, :status, :rounds, :atout, :points, :winner
 json.teams @game.teams do |team|
-  json.extract! team, :id, :name, :points
+  json.extract! team, :id, :name, :points, :winner
 
   json.player team.players do |player|
     json.extract! player, :id, :name, :first_to_play, :distributor
@@ -9,4 +9,6 @@ json.teams @game.teams do |team|
       json.extract! announce, :id, :name, :points, :rounds
     end
   end
+
+
 end
