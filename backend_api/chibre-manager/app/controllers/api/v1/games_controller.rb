@@ -2,7 +2,7 @@ class Api::V1::GamesController < Api::V1::BaseController
 
   # Utilise la méthode "set game" avant d'utiliser les méthodes "show" et update,
   # Permets de trouver la bonne partie selon une id
-  before_action :set_game, only: [:show, :update]
+  before_action :set_game, only: [:show, :update, :destroy]
 
   # Liste toutes les parties dans la variable @game
   def index
@@ -13,7 +13,6 @@ class Api::V1::GamesController < Api::V1::BaseController
   def create
 
     # Crée une partie
-    puts(params)
     @game = Game.new(points: params[:game_points])
 
     # Crée les deux équipes
@@ -91,7 +90,6 @@ class Api::V1::GamesController < Api::V1::BaseController
       @player4.update(first_to_play: true)
       @player4.update(position: 1)
       @player4.update(distributor: false)
-
     end
 
     # Vérifie si toutes les valeurs attendues sont là puis créé tous les informations (Game, Team, Player) pour la partie
@@ -109,24 +107,20 @@ class Api::V1::GamesController < Api::V1::BaseController
   end
 
 
-
+  # Met a jour une partie
   def update
 
-    puts("***************")
-    puts(params)
-    puts("***************")
-
-    # Crée les quatres joueurs
-
+    # Vérifie si il y a les points des matches dans les params
     if (params[:points_manche])
+
+      # Additionne tous les points des annonces
       team1_total_point_announce = params[:team1_num0_announce].to_i + params[:team1_num01_announce].to_i + params[:team1_num2_announce].to_i + params[:team1_num3_announce].to_i + params[:team1_num4_announce].to_i
       team2_total_point_announce = params[:team2_num0_announce].to_i + params[:team2_num01_announce].to_i + params[:team2_num2_announce].to_i + params[:team2_num3_announce].to_i + params[:team2_num4_announce].to_i
 
+      # Met a jour la manche de la partie
       @game.update(rounds: @game.rounds + 1)
 
-
-
-
+      # Permet de définir le nouveau distributeur
       @game.teams.each do |team|
         team.players.each do |player|
           if (player.distributor)
@@ -147,8 +141,7 @@ class Api::V1::GamesController < Api::V1::BaseController
         end
       end
 
-
-
+      # Permet de définir le joueur qui devra chosir l'atout
       @game.teams.each do |team|
         team.players.each do |player|
           if (player.first_to_play)
@@ -169,11 +162,9 @@ class Api::V1::GamesController < Api::V1::BaseController
         end
       end
 
-
-
-
-
+      # Verifie si les points de la manche sont a 0 et met a jour les points de l'équipe 2
       if params[:points_manche].to_i == 0
+        # Vérifie si il y a un match; Si oui on ajoute 257 points sinon 157
         if params[:match] == "oui"
           @game.teams.last.update(points: 257 +  @game.teams.last.points.to_i + team2_total_point_announce)
         else
@@ -185,10 +176,10 @@ class Api::V1::GamesController < Api::V1::BaseController
         @game.teams.last.update(points: 157 - params[:points_manche].to_i + @game.teams.last.points.to_i + team2_total_point_announce)
       end
 
-
+      # Met a jour les points de l'équipe 2
       @game.teams.first.update(points: params[:points_manche].to_i + @game.teams.first.points.to_i + team1_total_point_announce )
 
-
+      # Vérifie si il y a un gagnant dans la partie
       if (@game.teams.first.points >= @game.points)
         @game.teams.first.update(winner: true)
         @game.update(winner: true)
@@ -197,39 +188,55 @@ class Api::V1::GamesController < Api::V1::BaseController
         @game.update(winner: true)
       end
 
+      # Sauvegarde une partie
       if @game.save
         render json: { success: true, teams: @game.teams, game: @game}
       end
 
-    elsif (params[:status] != '')
-      @game.update(status: params[:status])
-
+    # Met a jour l'atout et affichige l'icone sur le bon joueur (atout)
     elsif (params[:atout] != '')
-
-
       @game.update(atout: params[:atout])
-      render json: { success: true, teams: @game.teams}
       if (params[:chibre] == "true")
         @game.teams.each do |team|
           team.players.each do |player|
-            if (player.position == 1)
+            if (player.first_to_play)
+              @first_to_play_position = player.position
               player.update(first_to_play: false)
-              elsif  (player.position == 3)
-              player.update(first_to_play: true)
             end
           end
         end
+        @new_first_to_play_position = @first_to_play_position + 2
+        if (@new_first_to_play_position == 5)
+          @new_first_to_play_position = 1
+        end
+        if (@new_first_to_play_position == 6)
+          @new_first_to_play_position = 2
+        end
+        @game.teams.each do |team|
+          team.players.each do |player|
+            if (player.position == @new_first_to_play_position)
+              player.update(first_to_play: true)
+              render json: { success: true, teams: @game.teams}
+            end
+          end
+        end
+      else
+        render json: { success: true, teams: @game.teams}
       end
 
-
-
+    # Verifie le status de la partie
+    elsif (params[:status] != '')
+      @game.update(status: params[:status])
     end
-
-
-
 
   end
 
+  # Permet de supprimer une partie
+  def destroy
+    if @game.destroy
+      render json: { success: true, game: @game}
+    end
+  end
 
   # Trouve une partie selon une id
   def set_game
