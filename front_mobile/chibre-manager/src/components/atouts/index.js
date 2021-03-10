@@ -1,42 +1,39 @@
-import React, {useEffect} from 'react'
+//Dépendance extérieure
+import React from 'react'
+import {View, TouchableOpacity, Image} from 'react-native'
 
-import {View, Text, TouchableOpacity, Image} from 'react-native'
-
-
+//Dépendance intérieure
 import {styles} from "./style"
-
 import {updateGame} from "../../common/api";
 import {useNavigation} from "@react-navigation/native";
 
-
-
-
-
+//Crée la fonction AtoutCard
 const AtoutCard = (props) => {
 
+  //FormData
   let formData = new FormData();
-  const navigation = useNavigation();
-  const test2 = async (id, value) => {
 
+  //Navigation
+  const navigation = useNavigation();
+
+  //Fonction qui permet de set l'atout et le chibre ainsi que de changer d'écran
+  const updateCurrentGame = async (id, value) => {
     formData.append('atout', value.color);
     formData.append('chibre', value.chibre);
-
-    const test = await updateGame(id, formData)
-
-    navigation.navigate('Game')
+    const updateCurrentGame = await updateGame(id, formData)
+    navigation.navigate("Game")
   };
 
-
+  //Retourne la vue principale de la fonction
   return (
-    <TouchableOpacity onPress={()=> {
-      test2(props.gameId, props)
+    <TouchableOpacity onPress={() => {
+      updateCurrentGame(props.gameId, props)
     }}>
       <View style={styles.card}>
         <Image style={styles.img} source={props.imageSource}/>
       </View>
     </TouchableOpacity>
   )
-
 }
 
 export default AtoutCard;

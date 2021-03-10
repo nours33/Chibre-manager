@@ -1,32 +1,28 @@
+//Dépendance extérieure
 import React from 'react'
+import {View} from 'react-native'
 
-import {View, Text, TouchableOpacity, Image} from 'react-native'
-import {Card, Paragraph, Title} from "react-native-paper";
-
-
+//Dépendance intérieure
 import {styles} from "./style";
-
 import Announces from "../../components/announces";
+
+//Crée la fonction AnnouncesScreen
 export default function AnnouncesScreen({route}) {
 
+  //Route
+  const {playerid, gameid, teamid, gameRound} = route.params;
 
-  const {playerid, gameid, teamid, gameRound } = route.params;
-
-
+  //Retourne toute la vue principale de la fonction
   return (
     <View style={styles.container}>
-
-
-     <Announces
+      <Announces
         name={"3 cartes"}
         points={20}
         playerid={playerid}
         gameid={gameid}
         teamid={teamid}
         gameRound={gameRound}
-
       />
-
       <Announces
         name={"4 cartes"}
         points={50}
@@ -35,7 +31,6 @@ export default function AnnouncesScreen({route}) {
         teamid={teamid}
         gameRound={gameRound}
       />
-
       <Announces
         name={"5 cartes"}
         points={100}
@@ -44,7 +39,6 @@ export default function AnnouncesScreen({route}) {
         teamid={teamid}
         gameRound={gameRound}
       />
-
       <Announces
         name={"Carré (10/Dame/Roi/As)"}
         points={100}
@@ -53,7 +47,6 @@ export default function AnnouncesScreen({route}) {
         teamid={teamid}
         gameRound={gameRound}
       />
-
       <Announces
         name={"Carré (9)"}
         points={150}
@@ -62,7 +55,6 @@ export default function AnnouncesScreen({route}) {
         teamid={teamid}
         gameRound={gameRound}
       />
-
       <Announces
         name={"Carré (Valet)"}
         points={200}
@@ -71,7 +63,6 @@ export default function AnnouncesScreen({route}) {
         teamid={teamid}
         gameRound={gameRound}
       />
-
       <Announces
         name={"Mit Stöck"}
         points={20}
@@ -80,8 +71,6 @@ export default function AnnouncesScreen({route}) {
         teamid={teamid}
         gameRound={gameRound}
       />
-
-
     </View>
   )
 }

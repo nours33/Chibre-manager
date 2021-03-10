@@ -1,8 +1,10 @@
+//Dépendance extérieure
 import {Dimensions, StyleSheet} from "react-native";
 
+//Dépendance intérieure
 const {width, height} = Dimensions.get('window')
 
-
+//Tableau de style pour la vue
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,17 +23,4 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 20,
   },
-  card: {
-    borderWidth: 1,
-    width: width/4.5,
-    height: height/8,
-    padding: 20,
-  },
-  img:{
-    width: 50,
-    height: 50,
-  }
-
-
-
 });

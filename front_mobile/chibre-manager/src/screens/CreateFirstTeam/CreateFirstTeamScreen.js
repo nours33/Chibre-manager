@@ -1,12 +1,9 @@
-/**
- * Dépendance extérieure
- */
+//Dépendance extérieure
 import React, {useContext} from 'react'
 import {View} from "react-native";
 
-/**
- * Dépendance intérieure
- */
+
+//Dépendance intérieure
 import {styles} from './style'
 import CreateTeam from "../../components/create-team";
 

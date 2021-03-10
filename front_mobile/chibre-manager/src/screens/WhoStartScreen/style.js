@@ -1,7 +1,7 @@
-import React from 'react'
-
+//Dépendance extérieure
 import {StyleSheet} from "react-native";
 
+//Tableau de style pour la vue
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -9,17 +9,4 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  containerPlayer:{
-
-    margin: 40,
-    padding: 40,
-
-  },
-  containerTeam:{
-    flexDirection:'row',
-  },
-  teamName: {
-    fontSize: 40,
-    textAlign: 'center'
-  }
 })

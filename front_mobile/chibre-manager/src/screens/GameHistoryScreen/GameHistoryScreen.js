@@ -1,34 +1,33 @@
+//Dépendance extérieure
 import React, {useEffect, useState} from 'react'
+import {View} from 'react-native'
 
-import {View, Text} from 'react-native'
-
+//Dépendance intérieure
 import GameHistory from "../../components/game-history";
 import {indexGame} from "../../common/api";
+import {styles} from "./style";
 
-import {Button} from 'react-native-paper'
-
-
+//Crée la fonction GameHistoryScreen
 export default function GameHistoryScreen() {
+
+  //useState
   const [gameData, setGameData] = useState(null)
 
-  useEffect(  () => {
-    getGame();
-  }, []);
-
+  //Fonction qui permet d'avoir la liste des partie crée
   const getGame = async () => {
     const games = await indexGame()
     setGameData(games)
   }
 
-  const test = async () => {
-    console.log(gameData)
-  }
+  // UseEffect
+  useEffect(() => {
+    getGame();
+  }, []);
 
-
+  //Retourne la vue principale de la fonction
   return (
     <View>
       <GameHistory GameData={gameData}/>
-      <Button onPress={() => {test()}}> test</Button>
     </View>
   )
 }

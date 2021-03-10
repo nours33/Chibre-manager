@@ -1,5 +1,7 @@
+//Dépendance intérieure
 import {host} from './constants'
 
+//Fonction qui permet de retourner une partie
 export const GetGame = async (id) => {
   const method = 'GET'
   const url = `${host}/api/v1/games/${id}`;
@@ -8,6 +10,7 @@ export const GetGame = async (id) => {
   return response
 };
 
+//Fonction qui permet de retourner une liste des parties crée
 export const indexGame = async  () => {
   const method = 'GET'
   const url = `${host}/api/v1/games`;
@@ -15,6 +18,7 @@ export const indexGame = async  () => {
   return response
 }
 
+//Fonction qui permet de supprimer une annonce
 export const destroyAnnounce = async (id) => {
   const method = 'DELETE'
   const url = `${host}/api/v1/announces/${id}`;
@@ -22,6 +26,15 @@ export const destroyAnnounce = async (id) => {
   return response
 };
 
+//Fonction qui permet de supprimer une partie
+export const destroyGame = async (id) => {
+  const method = 'DELETE'
+  const url = `${host}/api/v1/games/${id}`;
+  let response = await _fetch(url, method);
+  return response
+};
+
+//Fonction qui permet de mettre a jour une partie
 export const updateGame = async (id, body) => {
   const method = 'PUT'
   const url = `${host}/api/v1/games/${id}`;
@@ -29,6 +42,7 @@ export const updateGame = async (id, body) => {
   return response
 };
 
+//Fonction qui permet de crée une partie
 export const createGame = async (body) => {
   const method = 'POST'
   const url = `${host}/api/v1/games`;
@@ -37,6 +51,7 @@ export const createGame = async (body) => {
   return response
 };
 
+//Fonction qui permet de crée une annonce
 export const createAnnounce = async (body) => {
   const method = 'POST'
   const url = `${host}/api/v1/player_announces`;
@@ -45,6 +60,7 @@ export const createAnnounce = async (body) => {
   return response
 };
 
+//Fonction qui va faire les requetes API et retourner un message d'erreure
 export const _fetch = async (url, method, body) => {
   const httpRequest = await fetch(url, {
     method: method,
@@ -79,6 +95,7 @@ export const _fetch = async (url, method, body) => {
   return null;
 };
 
+//Permet de retourner le message d'erreure
 export const handleHttpError = (errors) => {
   if (errors instanceof Error) {
     console.log(errors.toString(), "red");

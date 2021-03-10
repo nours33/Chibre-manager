@@ -1,15 +1,12 @@
-/**
- * Dépendance extérieure
- */
+//Dépendance extérieure
 import React, {useContext, useEffect, useState} from 'react'
-import {View, Text, Picker} from 'react-native'
+import {View} from 'react-native'
 
-/**
- * Dépendance intérieure
- */
+//Dépendance intérieure
 import {GameContext} from "../../../App";
-import { RadioButton, Button } from 'react-native-paper';
+import {Button} from 'react-native-paper';
 import WhoStarted from "../../components/who-started";
+import PickerCustom from "../../components/picker";
 import {createGame} from "../../common/api";
 import {useNavigation} from "@react-navigation/native";
 import {styles} from './style'
@@ -21,10 +18,12 @@ export default function WhoStartScreen() {
   const navigation = useNavigation();
 
   //useState
-  const { team1, setTeam1, team2 } = useContext(GameContext);
   const [checked, setChecked] = React.useState('first');
   const [data, setData] = React.useState([]);
   const [selectedValue, setSelectedValue] = useState('1000');
+
+  //Context
+  const {team1, team2} = useContext(GameContext);
 
   //FormData
   let formData = new FormData();
@@ -39,7 +38,6 @@ export default function WhoStartScreen() {
     formData.append('player4', team2.player4);
     formData.append('game_points', selectedValue);
     formData.append('first_to_play', checked);
-
     setData(formData)
   }
 
@@ -51,37 +49,32 @@ export default function WhoStartScreen() {
     })
   };
 
- //useEffect
-  useEffect(  () => {
+  //useEffect
+  useEffect(() => {
     dataGame();
-  }, [checked,selectedValue]);
+  }, [checked, selectedValue]);
 
   //Return
   return (
     <View style={styles.container}>
-
-    <View>
-      <Text style={styles.title}> Combien de points ?</Text>
       <View>
-        <Picker
-          mode={"dropdown"}
-          selectedValue={selectedValue}
-          style={{ height: 50, width: 150, color: 'black' }}
-          onValueChange={(itemValue) => setSelectedValue(itemValue)}
-        >
-          <Picker.Item label="1000 points" value={1000} />
-          <Picker.Item label="1500 points" value={1500} />
-        </Picker>
+        <WhoStarted
+          callback={setChecked}
+          checked={checked}
+        />
       </View>
-    </View>
+      <PickerCustom
+        callback={setSelectedValue}
+        selectedValue={selectedValue}
+      />
       <View>
         <Button
-          mode="outlined"
+          mode="contained"
           onPress={() => {
             createCurrentGame();
           }}
         >
-        Commencez la partie !
+          Commencez la partie !
         </Button>
       </View>
     </View>

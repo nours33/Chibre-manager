@@ -1,143 +1,120 @@
+//Dépendance extérieure
 import React, {useState, useContext} from 'react'
+import {View, Text, TouchableOpacity, Image, FlatList, Modal, TextInput, Pressable} from 'react-native'
 
-import {View, Text, TouchableOpacity, Image, FlatList, Modal, TextInput, Pressable } from 'react-native'
-
-
+//Dépendance intérieure
 import {styles} from './style'
 import {useNavigation} from "@react-navigation/native";
-
-
 import {GameContext} from "../../../App";
 import {destroyAnnounce} from "../../common/api";
 
-
-
-
-
-
+//Crée la fonction TeamView
 const TeamView = (props) => {
 
+  //Navigation
   const navigation = useNavigation();
 
+  //useState
   const [modalVisible, setModalVisible] = useState(false);
 
-
+  //Context
   const {pointsManche, setPointsManche} = useContext(GameContext);
 
-
-  const TestView = () => {
-
-    if (props.clickable == true) {
+  //Fonction qui permet de rendre cliquable seulement le block "Points manches" de la premier équipe
+  const SetPointsTeam = () => {
+    if (props.clickable === true) {
       return (
-        <TouchableOpacity    onPress={() => setModalVisible(true)}>
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
           <View style={styles.card}>
             <Text style={{color: 'white'}}>Points manche : {props.pointsManche}</Text>
           </View>
         </TouchableOpacity>
       )
-    }
-    else {
+    } else {
       return (
         <View style={styles.card}>
           <Text style={{color: 'white'}}>Points manche : {props.pointsManche}</Text>
         </View>
       )
     }
+  };
 
-  }
-
+  //Fonction qui permet de montrer les atouts d'une partie
   const ShowAtout = () => {
-    switch(props.atout) {
+    switch (props.atout) {
       case "trefle":
         return (
-          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/trefle.png')} />
-        )
+          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/trefle.png')}/>
+        );
         break;
-
       case "carreaux":
         return (
-          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/carreaux.png')} />
-        )
+          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/carreaux.png')}/>
+        );
         break;
-
       case "spades":
         return (
-          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/spades.png')} />
-        )
+          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/spades.png')}/>
+        );
         break;
-
       case "hearth":
         return (
-          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/hearth.png')} />
-        )
+          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/hearth.png')}/>
+        );
         break;
-
       default:
         return null
-
-
     }
-  }
+  };
 
-
-
+  //Fonction qui permet de montrer qui est le distributeur de l'equipe 1
   const Distributor1 = () => {
-
     if (props.player1.distributor) {
       return (
-        <Image style={styles.imgAtout} source={require('../../../assets/img/cards.png')} />
+        <Image style={styles.imgAtout} source={require('../../../assets/img/cards.png')}/>
       )
-    }
-    else {
+    } else {
       return null
     }
+  };
 
-  }
-
+  //Fonction qui permet de montrer qui est le distributeur de l'equipe 2
   const Distributor2 = () => {
-
     if (props.player2.distributor) {
       return (
-        <Image style={styles.imgAtout} source={require('../../../assets/img/cards.png')} />
+        <Image style={styles.imgAtout} source={require('../../../assets/img/cards.png')}/>
       )
-    }
-    else {
+    } else {
       return null
     }
+  };
 
-  }
-
+  //Fonction qui permet de montrer qui est le premier joueur de l'équipe 1
   const AtoutPlayer1 = () => {
-
     if (props.player1.first_to_play) {
       return (
         <ShowAtout/>
       )
-    }
-    else {
+    } else {
       return null
     }
+  };
 
-  }
-
+  //Fonction qui permet de montrer qui est le premier joueur de l'équipe 2
   const AtoutPlayer2 = () => {
-
     if (props.player2.first_to_play) {
       return (
         <ShowAtout/>
       )
-    }
-    else {
+    } else {
       return null
     }
-  }
+  };
 
-
+  //Retourne toute la vue principale de la fonction
   return (
-
     <View style={styles.container}>
-
-
+      {/*Modale qui apparait quand l'on veut changer les points d'une manche*/}
       <Modal
         animationType="slide"
         transparent={false}
@@ -146,11 +123,12 @@ const TeamView = (props) => {
           setModalVisible(!modalVisible);
         }}
       >
+        {/*Vue du modal*/}
         <View style={styles.modalContainer}>
           <View style={styles.modal}>
             <Text style={styles.bigTitle}> {props.team.name}</Text>
             <TextInput
-              style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
               keyboardType={"numeric"}
               value={pointsManche}
               onChangeText={pointsManche => setPointsManche(pointsManche)}
@@ -164,24 +142,18 @@ const TeamView = (props) => {
           </View>
         </View>
       </Modal>
-
-
-
+      {/*Nom de l'équipe*/}
       <View>
-
         <View>
           <Text style={styles.bigTitle}> {props.team.name}</Text>
         </View>
-
-
         <View style={styles.cardContainer}>
           <View style={styles.card}>
             <Text style={{color: 'white'}}>Points Total: {props.pointsTotal}  </Text>
           </View>
-          <TestView />
+          <SetPointsTeam/>
         </View>
-
-
+        {/*Annonce d'une équipe*/}
         <View style={styles.cardContainer}>
           <View style={styles.bigCard}>
             <Text style={{color: 'white'}}>Annonces: </Text>
@@ -189,16 +161,13 @@ const TeamView = (props) => {
               keyExtractor={(post) => post.id.toString()}
               data={props.announcesTeam}
               renderItem={({item}) => {
-
-                const test2 = async () => {
-
-                  const DataGame = await destroyAnnounce(item.id)
-                }
-
+                const destroyCurrentAnnounce = async () => {
+                return await destroyAnnounce(item.id)
+                };
                 return (
                   <View>
                     <TouchableOpacity onPress={() => {
-                      test2();
+                      destroyCurrentAnnounce();
                     }}>
                       <Text style={{color: 'white'}}>
                         {item.name} ({item.points})
@@ -210,9 +179,8 @@ const TeamView = (props) => {
             />
           </View>
         </View>
-
-
         <View style={styles.cardContainer}>
+          {/*Joueur 1*/}
           <View style={styles.card}>
             <View style={styles.containerDistributor}>
               <Text style={{color: 'white'}}>{props.player1.name} </Text>
@@ -227,10 +195,10 @@ const TeamView = (props) => {
               gameRound: props.game.rounds
             })
             }>
-              <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
+              <Image style={styles.img} source={require('../../../assets/img/plus.png')}/>
             </TouchableOpacity>
           </View>
-
+          {/*Joueur 2*/}
           <View style={styles.card}>
             <View style={styles.containerDistributor}>
               <Text style={{color: 'white'}}>{props.player2.name} </Text>
@@ -246,17 +214,13 @@ const TeamView = (props) => {
               setAnnounce: props.setAnnounce
             })
             }>
-              <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
+              <Image style={styles.img} source={require('../../../assets/img/plus.png')}/>
             </TouchableOpacity>
           </View>
         </View>
-
-
-
       </View>
     </View>
   )
 }
 
-
-export default  TeamView;
+export default TeamView;

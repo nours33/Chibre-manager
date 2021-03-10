@@ -1,11 +1,7 @@
-/**
- * Dépendance extérieure
- */
+//Dépendance extérieure
 import React, {useState, createContext} from 'react';
 
-/**
- * Dépendance intérieure
- */
+//Dépendance intérieure
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from "./src/screens/Home/HomeScreen";
@@ -17,6 +13,7 @@ import WhoStartScreen from "./src/screens/WhoStartScreen/WhoStartScreen";
 import AnnouncesScreen from "./src/screens/AnnouncesSreen/AnnouncesScreen";
 import AtoutsScreen from "./src/screens/AtoutsScreen/AtoutsScreen";
 import GameOptionScreen from "./src/screens/GameOptionScreen/GameOptionScreen";
+import InfoScreen from "./src/screens/InfoScreen/InfoScreen";
 
 // Crée un context pour réutilisser tout les variables a l'intérieur dans d'autre vue
 export const GameContext = createContext({
@@ -49,20 +46,72 @@ function App() {
   return (
     <GameContext.Provider value={value}>
       <NavigationContainer>
-        <Stack.Navigator
-          // screenOptions={{
-          //   headerShown: false
-          // }}
-        >
-          <Stack.Screen name="Home" component={HomeScreen}/>
-          <Stack.Screen name="CreateTeam1" component={CreateFirstTeam}/>
-          <Stack.Screen name="CreateTeam2" component={CreateSecondTeamScreen}/>
-          <Stack.Screen name="WhoStart" component={WhoStartScreen}/>
-          <Stack.Screen name="Game" component={GameScreen}/>
-          <Stack.Screen name="Announces" component={AnnouncesScreen}/>
-          <Stack.Screen name="Atouts" component={AtoutsScreen}/>
-          <Stack.Screen name="Historical" component={GameHistoryScreen}/>
-          <Stack.Screen name="GameOption" component={GameOptionScreen}/>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={() => ({
+              title: "Bienvenue",
+              headerTitleAlign: 'center'
+            })}
+
+          />
+          <Stack.Screen
+            name="CreateTeam1"
+            component={CreateFirstTeam}
+            options={() => ({
+              title: "Crée votre première équipe",
+              headerTitleAlign: 'center',
+              headerLeft: null
+            })}
+          />
+          <Stack.Screen
+            name="CreateTeam2"
+            component={CreateSecondTeamScreen}
+            options={() => ({
+              title: "Crée votre deuxième équipe",
+              headerTitleAlign: 'center',
+              headerLeft: null
+            })}
+          />
+          <Stack.Screen
+            name="WhoStart"
+            component={WhoStartScreen}
+            options={() => ({
+              title: "Qui Choisies l'atout en premier ?",
+              headerTitleAlign: 'center',
+              headerLeft: null
+            })}
+          />
+          <Stack.Screen
+            name="Game"
+            component={GameScreen}
+            options={() => ({
+              title: "Jeux",
+              headerTitleAlign: 'center',
+              headerLeft: null
+            })}
+          />
+          <Stack.Screen
+            name="Announces"
+            component={AnnouncesScreen}
+          />
+          <Stack.Screen
+            name="Atouts"
+            component={AtoutsScreen}
+          />
+          <Stack.Screen
+            name="Historical"
+            component={GameHistoryScreen}
+          />
+          <Stack.Screen
+            name="GameOption"
+            component={GameOptionScreen}
+          />
+          <Stack.Screen
+            name="Info"
+            component={InfoScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </GameContext.Provider>
