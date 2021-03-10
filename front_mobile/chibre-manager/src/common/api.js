@@ -4,6 +4,21 @@ export const GetGame = async (id) => {
   const method = 'GET'
   const url = `${host}/api/v1/games/${id}`;
   let response = await _fetch(url, method);
+  console.log(response)
+  return response
+};
+
+export const indexGame = async  () => {
+  const method = 'GET'
+  const url = `${host}/api/v1/games`;
+  let response = await _fetch(url, method);
+  return response
+}
+
+export const destroyAnnounce = async (id) => {
+  const method = 'DELETE'
+  const url = `${host}/api/v1/announces/${id}`;
+  let response = await _fetch(url, method);
   return response
 };
 
@@ -12,9 +27,9 @@ export const updateGame = async (id, body) => {
   const url = `${host}/api/v1/games/${id}`;
   let response = await _fetch(url, method, body);
   return response
-}
+};
 
-export const CreateGame = async (body) => {
+export const createGame = async (body) => {
   const method = 'POST'
   const url = `${host}/api/v1/games`;
   console.log(body)
