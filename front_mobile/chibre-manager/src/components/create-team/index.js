@@ -22,17 +22,22 @@ const CreateTeam = (props) => {
   const [team, setTeam] = useState('');
 
 
+
   const navigation = useNavigation();
 
 
 
   const test = () => {
+
     if (props.currentScreen == 'Team1') {
       setTeam1({...team1, team1: team, player1: playerOne, player2: playerTwo});
     }
     else {
       setTeam2({...team2, team2: team, player3: playerOne, player4: playerTwo});
     }
+
+    if (playerOne !== '' && playerTwo !== '' && team !== '')
+    navigation.navigate(props.routeNavigation);
   }
 
 
@@ -79,7 +84,7 @@ const CreateTeam = (props) => {
         </View>
       </View>
       <View>
-        <Button mode="contained" onPress={() => {navigation.navigate(props.routeNavigation); test()}} >Suivant</Button>
+        <Button mode="contained" onPress={() => test()} >Suivant</Button>
       </View>
       <View>
       </View>

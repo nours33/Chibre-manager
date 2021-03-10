@@ -10,15 +10,15 @@ import {Image, Text, View, FlatList,TouchableOpacity} from "react-native";
 import { DataTable } from 'react-native-paper';
 import moment from 'moment'
 
-
+import {useNavigation} from "@react-navigation/native";
 
 const GameHistory = (props) => {
+  const navigation = useNavigation();
   return (
     <DataTable>
       <DataTable.Header>
         <DataTable.Title>Nom</DataTable.Title>
         <DataTable.Title>Team</DataTable.Title>
-        <DataTable.Title>Joueur</DataTable.Title>
         <DataTable.Title>Date</DataTable.Title>
       </DataTable.Header>
 
@@ -36,11 +36,14 @@ const GameHistory = (props) => {
 
                 console.log(item['teams'][0].player)
                 return (
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() => { navigation.navigate('GameOption', {
+                      game: item
+                    })
+
+                  }}>
                     <DataTable.Row>
                       <DataTable.Cell>{item.name}</DataTable.Cell>
                       <DataTable.Cell>{item['teams'][0].name}  {item['teams'][1].name}</DataTable.Cell>
-                      <DataTable.Cell>{item['teams'][0].player[0].name} {item['teams'][0].player[1].name} {item['teams'][1].player[0].name} {item['teams'][1].player[1].name}</DataTable.Cell>
                       <DataTable.Cell>{date_good_format}</DataTable.Cell>
                     </DataTable.Row>
                   </TouchableOpacity>

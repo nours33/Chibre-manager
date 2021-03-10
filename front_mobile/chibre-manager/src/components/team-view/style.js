@@ -7,6 +7,10 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 
+  imgAtout: {
+    width: 20,
+    height: 20,
+  },
   img:{
     width: 20,
     height: 20,
@@ -27,6 +31,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
 
+  },
+
+  containerDistributor: {
+    flexDirection: 'row',
   },
 
   card: {

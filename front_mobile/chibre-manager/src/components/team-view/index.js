@@ -8,6 +8,7 @@ import {useNavigation} from "@react-navigation/native";
 
 
 import {GameContext} from "../../../App";
+import {destroyAnnounce} from "../../common/api";
 
 
 
@@ -45,20 +46,91 @@ const TeamView = (props) => {
 
   }
 
-  // const DistributorOrNot = () => {
-  //   console.log(props.player1)
-  //   if (props.player1.first_to_play) {
-  //    return (
-  //      <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
-  //    )
-  //   }
-  //   if (props.player2.first_to_play) {
-  //     return (
-  //       <Image style={styles.img} source={require('../../../assets/img/plus.png')}  />
-  //     )
-  //
-  //   }
-  // }
+  const ShowAtout = () => {
+    switch(props.atout) {
+      case "trefle":
+        return (
+          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/trefle.png')} />
+        )
+        break;
+
+      case "carreaux":
+        return (
+          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/carreaux.png')} />
+        )
+        break;
+
+      case "spades":
+        return (
+          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/spades.png')} />
+        )
+        break;
+
+      case "hearth":
+        return (
+          <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/hearth.png')} />
+        )
+        break;
+
+      default:
+        return null
+
+
+    }
+  }
+
+
+
+  const Distributor1 = () => {
+
+    if (props.player1.distributor) {
+      return (
+        <Image style={styles.imgAtout} source={require('../../../assets/img/cards.png')} />
+      )
+    }
+    else {
+      return null
+    }
+
+  }
+
+  const Distributor2 = () => {
+
+    if (props.player2.distributor) {
+      return (
+        <Image style={styles.imgAtout} source={require('../../../assets/img/cards.png')} />
+      )
+    }
+    else {
+      return null
+    }
+
+  }
+
+  const AtoutPlayer1 = () => {
+
+    if (props.player1.first_to_play) {
+      return (
+        <ShowAtout/>
+      )
+    }
+    else {
+      return null
+    }
+
+  }
+
+  const AtoutPlayer2 = () => {
+
+    if (props.player2.first_to_play) {
+      return (
+        <ShowAtout/>
+      )
+    }
+    else {
+      return null
+    }
+  }
 
 
   return (
@@ -117,10 +189,22 @@ const TeamView = (props) => {
               keyExtractor={(post) => post.id.toString()}
               data={props.announcesTeam}
               renderItem={({item}) => {
+
+                const test2 = async () => {
+
+                  const DataGame = await destroyAnnounce(item.id)
+                }
+
                 return (
-                    <Text style={{color: 'white'}}>
-                      {item.name} ({item.points})
-                    </Text>
+                  <View>
+                    <TouchableOpacity onPress={() => {
+                      test2();
+                    }}>
+                      <Text style={{color: 'white'}}>
+                        {item.name} ({item.points})
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
                 )
               }}
             />
@@ -128,14 +212,13 @@ const TeamView = (props) => {
         </View>
 
 
-
-
-
-
         <View style={styles.cardContainer}>
           <View style={styles.card}>
-            <Text style={{color: 'white'}}>{props.player1.name} </Text>
-            {/*<DistributorOrNot/>*/}
+            <View style={styles.containerDistributor}>
+              <Text style={{color: 'white'}}>{props.player1.name} </Text>
+              <AtoutPlayer1/>
+              <Distributor1/>
+            </View>
             <Text style={{color: 'white'}}>Ajouter une annonce </Text>
             <TouchableOpacity onPress={() => navigation.navigate('Announces', {
               playerid: props.player1.id,
@@ -149,7 +232,11 @@ const TeamView = (props) => {
           </View>
 
           <View style={styles.card}>
-            <Text style={{color: 'white'}}>{props.player2.name} </Text>
+            <View style={styles.containerDistributor}>
+              <Text style={{color: 'white'}}>{props.player2.name} </Text>
+              <AtoutPlayer2/>
+              <Distributor2/>
+            </View>
             <Text style={{color: 'white'}}>Ajouter une annonce </Text>
             <TouchableOpacity onPress={() => navigation.navigate('Announces', {
               playerid: props.player2.id,
