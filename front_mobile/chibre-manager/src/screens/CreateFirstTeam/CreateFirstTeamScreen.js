@@ -1,16 +1,17 @@
+/**
+ * Dépendance extérieure
+ */
 import React, {useContext} from 'react'
 import {View} from "react-native";
 
+/**
+ * Dépendance intérieure
+ */
 import {styles} from './style'
-
 import CreateTeam from "../../components/create-team";
 
-
-
-
-
+//Crée la fonction CreateFirstTeamScreen
 export default function CreateFirstTeamScreen() {
-
   return (
     <View style={styles.container}>
       <CreateTeam
@@ -22,8 +23,5 @@ export default function CreateFirstTeamScreen() {
         currentScreen="Team1"
       />
     </View>
-
   )
 }
-
-

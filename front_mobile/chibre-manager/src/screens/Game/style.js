@@ -22,7 +22,19 @@ export const styles = StyleSheet.create({
     width: width/2.3,
   },
 
+  img: {
+    width: 35,
+    height: 35,
+  },
 
+  imgAtout: {
+    width: 25,
+    height: 25,
+  },
+
+  containerButtons: {
+    flexDirection: 'row'
+  }
 
 
 });

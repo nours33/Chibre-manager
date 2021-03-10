@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react'
 
-import {View, Text, FlatList} from 'react-native'
+import {View, Text} from 'react-native'
 
 import GameHistory from "../../components/game-history";
-import {GetGame} from "../../common/api";
+import {indexGame} from "../../common/api";
+
+import {Button} from 'react-native-paper'
 
 
 export default function GameHistoryScreen() {
@@ -14,13 +16,19 @@ export default function GameHistoryScreen() {
   }, []);
 
   const getGame = async () => {
-    const games = await GetGame()
+    const games = await indexGame()
     setGameData(games)
   }
+
+  const test = async () => {
+    console.log(gameData)
+  }
+
 
   return (
     <View>
       <GameHistory GameData={gameData}/>
+      <Button onPress={() => {test()}}> test</Button>
     </View>
   )
 }

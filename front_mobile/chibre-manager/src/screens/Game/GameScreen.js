@@ -1,19 +1,21 @@
 import React, {useEffect, useContext, useState} from 'react'
-import {View, Text, Pressable, TextInput, Modal, Picker} from 'react-native'
+import {View, Text, Pressable, TextInput, Modal, Picker, Image, TouchableOpacity} from 'react-native'
 
 import {styles} from "./style";
 
-import { Colors, ActivityIndicator, RadioButton} from 'react-native-paper';
+import {Colors, ActivityIndicator, RadioButton, Button} from 'react-native-paper';
 import {GetGame, updateGame} from "../../common/api";
 import TeamView from "../../components/team-view";
 
 import {GameContext} from "../../../App";
 
+import {useNavigation} from "@react-navigation/native";
 
 
 
 
 export default function GameScreen({route}) {
+  const navigation = useNavigation();
 
   const {game} = route.params;
   const [gameData, setGameData] = React.useState([]);
@@ -24,12 +26,49 @@ export default function GameScreen({route}) {
   const [announcesTeam2, setAnnouncesTeam2] = React.useState([]);
   const [pointsTeam2, setPointsTeam2] = React.useState(0);
 
+  const [distributor, setDistributor] = React.useState('');
+
   /*Changer valeur de oui par true*/
-  const [selectedValue, setSelectedValue] = useState('oui');
+  const [selectedValue, setSelectedValue] = useState(false);
 
   const {pointsManche} = useContext(GameContext);
 
   let formData = new FormData();
+
+
+const ShowAtout = () => {
+  switch(gameData.atout) {
+    case "trefle":
+      return (
+        <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/trefle.png')} />
+      )
+      break;
+
+    case "carreaux":
+      return (
+        <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/carreaux.png')} />
+      )
+      break;
+
+    case "spades":
+      return (
+        <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/spades.png')} />
+      )
+      break;
+
+    case "hearth":
+      return (
+        <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/hearth.png')} />
+      )
+      break;
+
+    default:
+      return  (
+      <Image style={styles.imgAtout} source={require('../../../assets/img/symbole/question-sign.png')} />
+    )
+
+  }
+}
 
  const updateCurrentGame = async () => {
 
@@ -47,12 +86,19 @@ export default function GameScreen({route}) {
 
  }
 
+ const updateStatusGame = async () => {
+   formData.append('status', 'game_over');
+   const updateGamelala = await updateGame(game.game.id, formData)
+ }
+
   const getGameAPI = async (id) => {
     const DataGame = await GetGame(id)
     setGameData(DataGame)
 
     currentAnnouncesTeam1(DataGame);
     currentAnnouncesTeam2(DataGame);
+
+    console.log(gameData)
 
   };
 
@@ -82,6 +128,20 @@ export default function GameScreen({route}) {
     setAnnouncesTeam1(announces);
   };
 
+  const test22 = () => {
+
+    gameData.teams.forEach((team) => {
+      team.player.forEach((player) => {
+        if (player.distributor)
+          setDistributor(player.name)
+      })
+    })
+  }
+
+
+
+
+
   const calculatePoints = (points) => {
     if (157 - points <= 0) {
       return  0
@@ -93,7 +153,7 @@ export default function GameScreen({route}) {
           <Picker
             selectedValue={selectedValue}
             style={{ height: 50, width: 100, color: 'white' }}
-            onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+            onValueChange={(itemValue) => setSelectedValue(itemValue)}
           >
             <Picker.Item label="oui" value={true} />
             <Picker.Item label="non" value={false} />
@@ -108,61 +168,121 @@ export default function GameScreen({route}) {
   }
 
   useEffect(   () => {
+
+    selectedValue
+  }, );
+
+  useEffect(   () => {
+
     getGameAPI(game.game.id);
-  }, [announcesTeam1]);
+  }, [game]);
 
   useEffect(  () => {
     calculatePoints();
   }, [selectedValue]);
 
   if (gameData.teams !== undefined) {
-    return (
-      <View style={styles.container}>
-        {/*<Pressable onPress={() => {currentAnnouncesTeam1(); currentAnnouncesTeam2()}}>*/}
-        {/*  <Text>Refresh</Text>*/}
-        {/*</Pressable>*/}
 
-        <Pressable onPress={() => {updateCurrentGame();}}>
-          <Text>manche suivante</Text>
-        </Pressable>
 
-        <Text> manche : {gameData.rounds}</Text>
-
-        <View style={styles.cardContainer}>
-          <View style={styles.card}>
-          <Text>Atout de la manche: </Text>
+    if(gameData.winner) {
+      if (gameData.teams[0].winner) {
+        return (
+          <View>
+            <View>
+              <Text>{gameData.teams[0].name} remporte la partie</Text>
+            </View>
+            <Button
+              mode={"contained"}
+              onPress={() => {{
+                updateStatusGame();
+                navigation.navigate("Home")
+              }}}
+            >Retour au menu</Button>
           </View>
-          <View style={styles.card}>
-            <Text>Distributeur ?: </Text>
+        )
+      }
+      if (gameData.teams[1].winner) {
+        return (
+          <View>
+            <View>
+              <Text>{gameData.teams[1].name} remporte la partie</Text>
+            </View>
+              <Button
+                mode={"contained"}
+              >Retour au menu</Button>
           </View>
+        )
+      }
+    }
+
+
+    else {
+      return (
+        <View style={styles.container}>
+          <View style={styles.containerButtons}>
+            <TouchableOpacity onPress={() => {getGameAPI(game.game.id); test22();}}>
+              <Image style={styles.img} source={require('../../../assets/img/refresh.png')}  />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => {updateCurrentGame();}}>
+              <Image style={styles.img} source={require('../../../assets/img/next.png')}  />
+            </TouchableOpacity>
+            <Text> Manche : {gameData.rounds}</Text>
+
+          </View>
+
+
+
+          <View style={styles.cardContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('Atouts', {
+              game: gameData,
+            })}>
+              <View style={styles.card}>
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                  <Text>Atout de la manche: </Text>
+                  <ShowAtout/>
+                </View>
+              </View>
+            </TouchableOpacity>
+            <View style={styles.card}>
+              <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+                <Text>Distributeur: {distributor} </Text>
+
+              </View>
+            </View>
+          </View>
+
+
+          <TeamView
+            game={gameData}
+            team={gameData.teams[0]}
+            player1={gameData.teams[0].player[0]}
+            player2={gameData.teams[0].player[1]}
+            announcesTeam={announcesTeam1}
+            pointsTotal={pointsTeam1}
+            pointsManche={pointsManche}
+            atout={gameData.atout}
+            clickable={true}
+          />
+
+
+          <TeamView
+            game={gameData}
+            team={gameData.teams[1]}
+            player1={gameData.teams[1].player[0]}
+            player2={gameData.teams[1].player[1]}
+            announcesTeam={announcesTeam2}
+            pointsTotal={pointsTeam2}
+            pointsManche={calculatePoints(pointsManche)}
+            atout={gameData.atout}
+            clickable={false}
+          />
         </View>
+      )
+    }
 
+      }
 
-      <TeamView
-        game={gameData}
-        team={gameData.teams[0]}
-        player1={gameData.teams[0].player[0]}
-        player2={gameData.teams[0].player[1]}
-        announcesTeam={announcesTeam1}
-        pointsTotal={pointsTeam1}
-        pointsManche={pointsManche}
-        clickable={true}
-      />
-
-
-        <TeamView
-          game={gameData}
-          team={gameData.teams[1]}
-          player1={gameData.teams[1].player[0]}
-          player2={gameData.teams[1].player[1]}
-          announcesTeam={announcesTeam2}
-          pointsTotal={pointsTeam2}
-          pointsManche={calculatePoints(pointsManche)}
-          clickable={false}
-        />
-      </View>
-    )
-  }
   if (gameData.teams == undefined) {
     return (
       <View>
@@ -170,4 +290,8 @@ export default function GameScreen({route}) {
       </View>
     )
   }
+
+
+
+
 }
