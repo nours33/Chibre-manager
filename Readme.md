@@ -1,7 +1,7 @@
 # backend_api
 C'est ici qu'est stocké tous les fichier qui concerne le serveur web de mon application. 
 
-# frontend_
+# frontend_mobile
 C'est ici qu'est stocké tous les fichier qui concerne l'application mobile.
 
 # Documentation
