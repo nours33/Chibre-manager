@@ -1,13 +1,33 @@
 # Backend
 
 ## Dependance
-
- - Ruby
- - Rails
- - PostgreSQL
- - WSL
- - yarn
- - NODE LTS 12
+### WSL
+Pour pouvoir installer wsl veuillez vous rendre sur cette page et suivre les instructions pour l'installation.
+https://docs.microsoft.com/en-us/windows/wsl/install-win10
+### Ruby
+```bash
+sudo apt install ruby-full
+```
+### RVM
+```bash
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+```
+### Rails
+```bash
+rvm install ruby-3.0.0
+```
+### PostgreSQL
+```bash
+sudo apt install postgresql postgresql-contrib
+```
+### NODE LTS 12
+```bash
+sudo apt install nodejs
+```
+### Yarn
+```bash
+npm install --global yarn
+```
  
 
 ## Installation
@@ -38,3 +58,10 @@ rails db:migration
 ```bash
 rails s
 ```
+
+
+## Version
+Ruby 3.0.0
+
+## Site Web
+https://www.ruby-lang.org/fr/
