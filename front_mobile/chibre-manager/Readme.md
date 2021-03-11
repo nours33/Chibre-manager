@@ -51,7 +51,8 @@ https://docs.expo.io/workflow/android-studio-emulator/
 https://play.google.com/store/apps/details?id=host.exp.exponent&hl=fr_CH&gl=US
 ```
  4. Une fois l'application installer vous devrez voir quelque chose comme ceci
- ![Screenshot_20210312-003649_Expo Go](https://user-images.githubusercontent.com/49155677/110869709-46a32100-82cb-11eb-837a-35c8d7a6b902.jpg)
+
+ <img width="200" src="https://user-images.githubusercontent.com/49155677/110869709-46a32100-82cb-11eb-837a-35c8d7a6b902.jpg">
 
 
 ## Version
