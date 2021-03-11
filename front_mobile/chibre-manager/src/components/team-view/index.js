@@ -126,7 +126,7 @@ const TeamView = (props) => {
         {/*Vue du modal*/}
         <View style={styles.modalContainer}>
           <View style={styles.modal}>
-            <Text style={styles.bigTitle}> {props.team.name}</Text>
+            <Text style={styles.bigTitle}> Nombre de points ?</Text>
             <TextInput
               style={{height: 40, borderColor: 'gray', borderWidth: 1}}
               keyboardType={"numeric"}
@@ -137,7 +137,7 @@ const TeamView = (props) => {
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>Back</Text>
+              <Text style={styles.textStyle}>Retour</Text>
             </Pressable>
           </View>
         </View>

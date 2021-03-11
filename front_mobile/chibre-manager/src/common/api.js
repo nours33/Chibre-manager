@@ -4,6 +4,7 @@ import {host} from './constants'
 //Fonction qui permet de retourner une partie
 export const GetGame = async (id) => {
   const method = 'GET'
+  console.log('hey')
   const url = `${host}/api/v1/games/${id}`;
   let response = await _fetch(url, method);
   console.log(response)

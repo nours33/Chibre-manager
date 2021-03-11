@@ -1,0 +1,220 @@
+swagger: '2.0'
+info:
+  description: Chibre Manager API
+  version: 1.0.0
+  title: simle api pour mon application chibre manager
+  # put the contact info for your development or API team
+  contact:
+    email: teo.sesti@wavemind.ch
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: Game
+  description: Toute les action possible sur les parties
+- name: Announce
+  description: Toute les action possible sur les annonce
+
+
+paths:
+  Show:
+    get:
+      tags:
+      - Game
+      summary: donne les informations d'une partie
+      operationId: game
+      description: donne les informations d'une partie
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Game
+        description: Description d'une partie
+        schema:
+          $ref: '#/api/v1/games/id'
+      responses:
+        201:
+          description: Partie crée
+        500:
+          description: Erreur serveur
+  Index:
+    get:
+      tags:
+      - Game
+      summary: Retourne une liste avec toutes les partie crée
+      operationId: game
+      description: Retourne une liste avec toutes les partie crée
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Game
+        description: Donne la liste de toutes les parties crée
+        schema:
+          $ref: '#/api/v1/games/id'
+      responses:
+        201:
+          description: Liste de partie retourné correctement
+        500:
+          description: Erreur serveur
+  Update:
+    put:
+      tags:
+      - Game
+      summary: Met à jour une partie
+      operationId: game
+      description: Met à jour une partie
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Game
+        description: Met à jour une partie
+        schema:
+          $ref: '#/api/v1/games/id'
+      responses:
+        201:
+          description: Liste de partie retourné correctement
+        500:
+          description: Erreur serveur
+  Create:
+    post:
+      tags:
+      - Game
+      summary: Crée une partie
+      operationId: game
+      description: Crée une partie
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Game
+        description: Crée une partie
+        schema:
+          $ref: '#/api/v1/games/id'
+      responses:
+        201:
+          description: Liste de partie retourné correctement
+        500:
+          description: Erreur serveur
+  Destroy:
+    delete:
+      tags:
+      - Game
+      summary: Supprime une partie 
+      operationId: game
+      description: Supprime une partie 
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Game
+        description: Supprime une partie 
+        schema:
+          $ref: '#/api/v1/games/id'
+      responses:
+        201:
+          description: Liste de partie retourné correctement
+        500:
+          description: Erreur serveur
+  Destroy-Announce:
+    delete:
+      tags:
+      - Announce
+      summary: Supprime une annonce d'une partie
+      operationId: announce
+      description: Supprime une annonce d'une partie
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Game
+        description: Supprime une annonce d'une partie
+        schema:
+          $ref: '#/api/v1/announces/id'
+      responses:
+        201:
+          description: Liste de partie retourné correctement
+        500:
+          description: Erreur serveur
+  Create-Announce:
+      post:
+        tags:
+        - Announce
+        summary: Crée une annonce pour une partie
+        operationId: announce
+        description: Crée une annonce pour une partie
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+        - in: body
+          name: Game
+          description: Crée une annonce pour une partie
+          schema:
+            $ref: '#/api/v1/announces/id'
+        responses:
+          201:
+            description: Liste de partie retourné correctement
+          500:
+            description: Erreur serveur
+definitions:
+  Game:
+    type: object
+    required:
+    - id
+    - name
+    - status
+    - atout
+    - points
+    - winner
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      status:
+        type: integer
+      atout:
+        type: string
+      points:
+        type: integer
+      winner:
+        type: boolean
+  Announce:
+    type: object
+    required:
+    - id
+    - name
+    - points
+    - rounds
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      points:
+        type: integer
+      rounds:
+        type: integer
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /nours33/chibre-manager/1.0.0
+schemes:
+ - https

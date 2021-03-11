@@ -27,7 +27,7 @@ const GameHistory = (props) => {
         keyExtractor={(post) => post.id.toString()}
         data={props['GameData']}
         renderItem={({item}) => {
-          var date_good_format = moment(item.created_at).local('fr').format('L')
+          var date_good_format = moment(item.created_at).local('fr').format('L')   //Met la date au bon format
           if (item.status && item['teams'][0] !== undefined) {
             if (item['teams'][0].player[0] !== undefined) {
               return (

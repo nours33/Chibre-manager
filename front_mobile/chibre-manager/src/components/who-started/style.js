@@ -1,9 +1,8 @@
-import {StyleSheet, Dimensions} from "react-native";
+//Dépendance extérieure
+import {StyleSheet} from "react-native";
 
-const {width, height} = Dimensions.get('window')
-
+//Tableau de style pour la vue
 export const styles = StyleSheet.create({
-
   container: {
     backgroundColor: '#fff',
   },
@@ -27,5 +26,4 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     textAlign: 'center'
   }
-
 });

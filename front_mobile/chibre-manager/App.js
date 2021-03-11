@@ -78,7 +78,7 @@ function App() {
             name="WhoStart"
             component={WhoStartScreen}
             options={() => ({
-              title: "Qui Choisies l'atout en premier ?",
+              title: "Qui choisit l'atout en premier ?",
               headerTitleAlign: 'center',
               headerLeft: null
             })}
@@ -103,6 +103,10 @@ function App() {
           <Stack.Screen
             name="Historical"
             component={GameHistoryScreen}
+            options={() => ({
+              title: "Historique des parties",
+              headerTitleAlign: 'center',
+            })}
           />
           <Stack.Screen
             name="GameOption"

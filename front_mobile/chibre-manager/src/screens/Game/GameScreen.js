@@ -157,19 +157,22 @@ export default function GameScreen({route}) {
   // UseEffect
   useEffect(() => {
     selectedValue
-  },);
+    // getGameAPI(game.game.id)
+  },[]);
 
   useEffect(() => {
     getGameAPI(game.game.id);
-  }, [game]);
+  }, []);
 
   useEffect(() => {
     calculatePoints();
   }, [selectedValue]);
 
 
+  console.log(game)
+
   //Rend la vue si une équipe gagne
-  if (gameData.teams !== undefined) {
+  if (gameData.teams !== undefined || gameData.teams !== null) {
     if (gameData.winner) {
       if (gameData.teams[0].winner) {
         return (
@@ -217,7 +220,7 @@ export default function GameScreen({route}) {
           </View>
         )
       }
-    } else {
+    } if ( gameData.teams !== undefined && gameData.teams !== null ) {
       //Retourne toute la vue principale de la fonction
       return (
         <View style={styles.container}>
@@ -294,7 +297,7 @@ export default function GameScreen({route}) {
     }
   }
   //Retourne la vue en attendant le chargement de la requete API
-  if (gameData.teams == undefined) {
+  if (gameData.teams == undefined || gameData.teams == null) {
     return (
       <View>
         <ActivityIndicator animating={true} color={Colors.red800}/>
