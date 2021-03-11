@@ -18,9 +18,7 @@ export default function GameHistoryScreen() {
     const games = await indexGame()
     setGameData(games)
   }
-<<<<<<< HEAD
-  console.log(gameData)
-=======
+
 
   // UseEffect
   useEffect(() => {
@@ -28,7 +26,6 @@ export default function GameHistoryScreen() {
   }, []);
 
   //Retourne la vue principale de la fonction
->>>>>>> GameScreen
   return (
     <View>
       <GameHistory GameData={gameData}/>
