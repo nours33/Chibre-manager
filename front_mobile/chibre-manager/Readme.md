@@ -22,8 +22,8 @@ npm install --global expo-cli
 npm install -g react-native-cli
 ```
 ```bash
-curl -0 -L https://npmjs.org/install.sh | sudo sh```
- 
+curl -0 -L https://npmjs.org/install.sh | sudo sh
+```
 ## Installation
 
  1. Aller dans le dossier frontend_mobile/chibre-manager/ et écrivez la commande suivante :
