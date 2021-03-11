@@ -21,8 +21,15 @@ http://gofile.me/6NSuo/AhpWDppRx
  <img width="500" src="https://user-images.githubusercontent.com/49155677/110870955-bf0ae180-82cd-11eb-9488-43a78d8a7943.png">
 
 2. Vous devez donner un nom aux deux équipes ainsi qu'autre quatre joueur.
+<img width="500" src="https://user-images.githubusercontent.com/49155677/110870955-bf0ae180-82cd-11eb-9488-43a78d8a7943.png">
+<img width="500" src="https://user-images.githubusercontent.com/49155677/110871000-d944bf80-82cd-11eb-83ba-7a6d08e5d37a.png">
+
 3. Vous devez choisir le premier joueur qui définira l'atout ainsi que les points maximaux d'une partie
+<img width="500" src="https://user-images.githubusercontent.com/49155677/110871059-f4173400-82cd-11eb-8f59-f261a8b2eb19.png">
+
+
 4. Voici les différentes instruction pour le déroulement d'une partie
+  <img width="500" src="https://user-images.githubusercontent.com/49155677/110871092-01ccb980-82ce-11eb-89de-1c0472196c68.png">
   4.1 La première chose à faire et de rafraichir l'écran avec le bouton situé en haut a gauche de l'écran.
   4.2 Ensuite vous pouvez définira l'atout en cliquant sur "Atout de la manche".
   4.3 Vous pouvez définir les points de la manche en cliquant sur "Points manche" de la première équipe
@@ -32,10 +39,13 @@ http://gofile.me/6NSuo/AhpWDppRx
   
 ### Reprendre une partie
 1. Cliquez sur le bouton reprendre une partie
+ <img width="500" src="https://user-images.githubusercontent.com/49155677/110870955-bf0ae180-82cd-11eb-9488-43a78d8a7943.png">
 2. Cliquez ensuite sur la partie que vous souhaitez continuer
+ <img width="500" src="https://user-images.githubusercontent.com/49155677/110871138-1ad56a80-82ce-11eb-9b0b-0db87dda62c8.png">
+
 3. Cliquez ensuite sur le bouton reprendre une partie
-
-
+ <img width="500" src="https://user-images.githubusercontent.com/49155677/110871161-27f25980-82ce-11eb-92ea-be6c6cd792b0.png">
+ 
 ### Supprimer une partie
 1. Cliquez sur le bouton reprendre une partie
 2. Cliquez ensuite sur la partie que vous souhaitez supprimer
