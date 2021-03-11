@@ -9,6 +9,4 @@ json.teams @game.teams do |team|
       json.extract! announce, :id, :name, :points, :rounds
     end
   end
-
-
 end
