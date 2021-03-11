@@ -32,11 +32,7 @@ npm install --global yarn
 
 ## Installation
 
-
 1. Télécharger le repo suivant
-
-![Capture d’écran 2021-03-12 001423](https://user-images.githubusercontent.com/49155677/110867967-faa2ad00-82c7-11eb-9011-a32fe8544dc2.png)
-
 2. Tappez cette commande n'importe ou depuis votre console
 ```bash
 bash
@@ -62,9 +58,17 @@ rails db:migration
 rails s
 ```
 
+## Utilisation
+1. Vous pouvez rejoindre le serveur web sur l'adresse suivante 
+```bash
+http://localhost:3000/
+```
 
-## Version
+## Ruby Version
 Ruby 3.0.0
 
+## Rails Version
+2.7.0
+	
 ## Site Web
 https://www.ruby-lang.org/fr/
