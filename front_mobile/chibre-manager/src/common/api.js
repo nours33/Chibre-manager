@@ -1,44 +1,66 @@
+//Dépendance intérieure
 import {host} from './constants'
 
-
-const useFetch = async (url, token) => {
-  const response = await fetch(url, {
-    headers: {
-      Authorization: 'Bearer' + token
-      // Authorization: 'Bearer' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGliZXJldGFmb3JjZS5jaCIsImlhdCI6MTYxMjM2NDU0OSwibmJmIjoxNjEyMzY0NTQ5LCJleHAiOjE2MTI5NjkzNDksImRhdGEiOnsidXNlciI6eyJpZCI6IjgifX19.U76d9UNN5qTHKd6phJpi4rbSvmpTAmEcjuogejAsaMw'
-    }
-  });
-  if (!response.ok) {
-    return;
-  }
-  const json = await response.json()
-  return json
-}
-
-export const GetGame = async () => {
+//Fonction qui permet de retourner une partie
+export const GetGame = async (id) => {
   const method = 'GET'
-  const url = `${host}/api/v1/games`;
-  return _fetch(url, method);
-};
-
-
-export const CreateGame = async () => {
-  const method = 'POST'
-  const url = `${host}/api/v1/games`;
+  const url = `${host}/api/v1/games/${id}`;
   let response = await _fetch(url, method);
   console.log(response)
   return response
 };
 
-export const CreateTeamAPI = async (body) => {
-  console.log(body)
-  const method = 'POST'
-  const url = `${host}/api/v1/teams`;
-  let response = await _fetch(url, method, body);
-  console.log(response)
+//Fonction qui permet de retourner une liste des parties crée
+export const indexGame = async  () => {
+  const method = 'GET'
+  const url = `${host}/api/v1/games`;
+  let response = await _fetch(url, method);
+  return response
+}
+
+//Fonction qui permet de supprimer une annonce
+export const destroyAnnounce = async (id) => {
+  const method = 'DELETE'
+  const url = `${host}/api/v1/announces/${id}`;
+  let response = await _fetch(url, method);
+  return response
 };
 
+//Fonction qui permet de supprimer une partie
+export const destroyGame = async (id) => {
+  const method = 'DELETE'
+  const url = `${host}/api/v1/games/${id}`;
+  let response = await _fetch(url, method);
+  return response
+};
 
+//Fonction qui permet de mettre a jour une partie
+export const updateGame = async (id, body) => {
+  const method = 'PUT'
+  const url = `${host}/api/v1/games/${id}`;
+  let response = await _fetch(url, method, body);
+  return response
+};
+
+//Fonction qui permet de crée une partie
+export const createGame = async (body) => {
+  const method = 'POST'
+  const url = `${host}/api/v1/games`;
+  console.log(body)
+  let response = await _fetch(url, method, body);
+  return response
+};
+
+//Fonction qui permet de crée une annonce
+export const createAnnounce = async (body) => {
+  const method = 'POST'
+  const url = `${host}/api/v1/player_announces`;
+  let response = await _fetch(url, method, body);
+  console.log(response)
+  return response
+};
+
+//Fonction qui va faire les requetes API et retourner un message d'erreure
 export const _fetch = async (url, method, body) => {
   const httpRequest = await fetch(url, {
     method: method,
@@ -73,6 +95,7 @@ export const _fetch = async (url, method, body) => {
   return null;
 };
 
+//Permet de retourner le message d'erreure
 export const handleHttpError = (errors) => {
   if (errors instanceof Error) {
     console.log(errors.toString(), "red");

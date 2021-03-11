@@ -1,14 +1,13 @@
-import React, {useContext} from 'react'
+//Dépendance extérieure
+import React from 'react';
 import {View} from "react-native";
 
+//Dépendance intérieure
 import {styles} from './style'
-import {GameContext} from "../../../App";
-
-
 import CreateTeam from "../../components/create-team";
 
-
-export default function CreateSecondTeam({route}) {
+//Crée la fonction CreateSecondTeam
+export default function CreateSecondTeam() {
   return (
     <View style={styles.container}>
       <CreateTeam
@@ -19,7 +18,6 @@ export default function CreateSecondTeam({route}) {
         routeNavigation="WhoStart"
       />
     </View>
-
   )
 }
 

@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
   create_table "announces", force: :cascade do |t|
     t.string "name"
     t.integer "points"
+    t.integer "rounds"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -25,8 +26,10 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.integer "status"
-    t.integer "round", default: 0
-    t.integer "atout"
+    t.integer "rounds", default: 1
+    t.string "atout"
+    t.integer "points", default: 0
+    t.boolean "winner", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,8 +45,9 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.integer "first_to_play"
-    t.integer "distributor"
+    t.boolean "first_to_play"
+    t.boolean "distributor"
+    t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "team_id"
@@ -53,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_142905) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.integer "points", default: 0
+    t.boolean "winner", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "game_id"

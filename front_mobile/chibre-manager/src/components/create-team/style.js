@@ -24,15 +24,21 @@ export const styles = StyleSheet.create({
   inputTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    margin: 30,
   },
   inputText: {
     width: width/2.5,
     marginRight: width/20,
     marginLeft: width/20,
   },
+
+  containerTextTeam:{
+    marginTop: 20,
+  },
 // Image
   img: {
     width: 50,
     height: 50,
+    marginTop: 20,
   }
 });

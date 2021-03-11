@@ -3,6 +3,7 @@ class CreateTeam < ActiveRecord::Migration[6.0]
     create_table :teams do |t|
       t.string :name
       t.integer :points, default: 0
+      t.boolean :winner, default: false
 
       t.timestamps
     end

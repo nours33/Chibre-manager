@@ -1,38 +1,51 @@
+//Dépendance extérieure
 import {StyleSheet, Dimensions} from "react-native";
-const {width, height} = Dimensions.get('window')
 
+//Dépendance intérieure
+const {width} = Dimensions.get('window');
 
+//Tableau de style pour la vue
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-
   },
-  block: {
-    backgroundColor: '#fff',
+  containerText: {
+    marginBottom: 50
+  },
+  cardContainer: {
     justifyContent: 'space-around',
     flexDirection: 'row',
-    marginTop: 10
-  },
-  cardContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   card: {
-    backgroundColor: '#5a00e5',
-    width: width/2.3,
+    backgroundColor: 'lightgrey',
+    padding: 20,
+    borderRadius: 5,
+    width: width / 2.3,
   },
-  bigCard: {
-    backgroundColor: '#5a00e5',
-    width: width/1.07,
+  img: {
+    width: 35,
+    height: 35,
   },
-  whiteFont: {
-    color: 'white'
+  imgAtout: {
+    width: 25,
+    height: 25,
   },
-  text: {
+  containerButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    margin: 20
+  },
+  title: {
     textAlign: 'center',
-    fontSize: 40,
+    fontSize: 24,
   },
-
+  winnerTitle: {
+    textAlign: 'center',
+    fontSize: 34,
+  },
+  containerButton: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });

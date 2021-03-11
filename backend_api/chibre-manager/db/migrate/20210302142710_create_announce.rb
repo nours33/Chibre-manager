@@ -3,6 +3,7 @@ class CreateAnnounce < ActiveRecord::Migration[6.0]
     create_table :announces do |t|
       t.string :name
       t.integer :points
+      t.integer :rounds
 
       t.timestamps
     end

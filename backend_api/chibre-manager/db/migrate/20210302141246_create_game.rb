@@ -3,8 +3,10 @@ class CreateGame < ActiveRecord::Migration[6.0]
     create_table :games do |t|
       t.string :name
       t.integer :status
-      t.integer :round, default: 0
-      t.integer :atout
+      t.integer :rounds, default: 1
+      t.string :atout
+      t.integer :points, default: 0
+      t.boolean :winner, default: false
 
       t.timestamps
     end
