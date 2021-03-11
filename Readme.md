@@ -18,6 +18,8 @@ http://gofile.me/6NSuo/AhpWDppRx
 ## Utilisation
 ### Crée une partie
 1. Vous etes dans le menu, c'est ici que vous aller choisir de commencer une nouvelle partie ou d'en reprendre une
+ <img width="500" src="https://user-images.githubusercontent.com/49155677/110870955-bf0ae180-82cd-11eb-9488-43a78d8a7943.png">
+
 2. Vous devez donner un nom aux deux équipes ainsi qu'autre quatre joueur.
 3. Vous devez choisir le premier joueur qui définira l'atout ainsi que les points maximaux d'une partie
 4. Voici les différentes instruction pour le déroulement d'une partie
