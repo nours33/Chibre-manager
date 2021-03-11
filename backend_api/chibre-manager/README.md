@@ -33,6 +33,8 @@ npm install --global yarn
 ## Installation
 
 1. Télécharger le repo suivant
+![Capture d’écran 2021-03-12 001423](https://user-images.githubusercontent.com/49155677/110868205-77358b80-82c8-11eb-9048-3aa3c0c92536.png)
+
 2. Tappez cette commande n'importe ou depuis votre console
 ```bash
 bash
