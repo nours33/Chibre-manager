@@ -25,8 +25,7 @@ http://gofile.me/6NSuo/AhpWDppRx
 
 
 3. Vous devez choisir le premier joueur qui définira l'atout ainsi que les points maximaux d'une partie
-<img width="500" src="https://user-images.githubusercontent.com/49155677/110871059-f4173400-82cd-11eb-8f59-f261a8b2eb19.png">
-
+<img width="500" src="https://user-images.githubusercontent.com/49155677/110871000-d944bf80-82cd-11eb-83ba-7a6d08e5d37a.png">
 
 4. Voici les différentes instruction pour le déroulement d'une partie
   <img width="500" src="https://user-images.githubusercontent.com/49155677/110871092-01ccb980-82ce-11eb-89de-1c0472196c68.png">
