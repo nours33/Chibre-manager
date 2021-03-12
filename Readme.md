@@ -21,7 +21,7 @@ http://gofile.me/6NSuo/AhpWDppRx
  <img width="500" src="https://user-images.githubusercontent.com/49155677/110870955-bf0ae180-82cd-11eb-9488-43a78d8a7943.png">
 
 2. Vous devez donner un nom aux deux équipes ainsi qu'autre quatre joueur.
-<img width="500" src="https://user-images.githubusercontent.com/49155677/110870955-bf0ae180-82cd-11eb-9488-43a78d8a7943.png">
+<img width="500" src="https://user-images.githubusercontent.com/49155677/110933743-7551e380-832d-11eb-94ca-25d72282b5d7.png">
 
 
 3. Vous devez choisir le premier joueur qui définira l'atout ainsi que les points maximaux d'une partie
