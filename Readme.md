@@ -30,6 +30,7 @@ http://gofile.me/6NSuo/AhpWDppRx
 
 4. Voici les différentes instruction pour le déroulement d'une partie
   <img width="500" src="https://user-images.githubusercontent.com/49155677/110871092-01ccb980-82ce-11eb-89de-1c0472196c68.png">
+  
   4.1 La première chose à faire et de rafraichir l'écran avec le bouton situé en haut a gauche de l'écran.
   4.2 Ensuite vous pouvez définira l'atout en cliquant sur "Atout de la manche".
   4.3 Vous pouvez définir les points de la manche en cliquant sur "Points manche" de la première équipe
