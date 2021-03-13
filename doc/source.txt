@@ -1,0 +1,43 @@
+https://reactnative.dev/
+
+https://callstack.github.io/react-native-paper/index.html
+
+https://guides.rubyonrails.org/
+
+https://fr.wikipedia.org/wiki/Framework
+
+https://fr.wikipedia.org/wiki/React_Native
+
+https://fr.wikipedia.org/wiki/Ruby_on_Rails
+
+https://fr.wikipedia.org/wiki/Ruby
+
+https://www.chibre.ch/forum/viewtopic.php?t=638
+
+https://www.jeuxdecartes.net/jeux-cartes/chibre/
+
+
+glossaire :
+
+TPI 
+Ruby 
+Ruby on Rails
+React Native
+Expo
+Framework
+Open Source
+API
+Git
+ERD
+PostMan
+NotePad
+Swagger.op
+Draw.io
+RubyMine
+SQL
+GET
+POST
+YAML
+useEffect
+ActiveRecord
+placeholder

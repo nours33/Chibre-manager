@@ -99,6 +99,10 @@ function App() {
           <Stack.Screen
             name="Atouts"
             component={AtoutsScreen}
+            options={() => ({
+              title: "Atout",
+              headerTitleAlign: 'center',
+            })}
           />
           <Stack.Screen
             name="Historical"
@@ -111,10 +115,18 @@ function App() {
           <Stack.Screen
             name="GameOption"
             component={GameOptionScreen}
+            options={() => ({
+              title: "Option de la partie",
+              headerTitleAlign: 'center',
+            })}
           />
           <Stack.Screen
             name="Info"
             component={InfoScreen}
+            options={() => ({
+              title: "Info",
+              headerTitleAlign: 'center',
+            })}
           />
         </Stack.Navigator>
       </NavigationContainer>
