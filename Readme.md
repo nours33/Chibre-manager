@@ -1,6 +1,6 @@
 # backend_api
 ## Introduction
-C'est mon serveur web, c'est ici qu'est gérer tout le backend de l'application, c'est 
+C'est dans le dossierr que mon serveur web est stocké, J'ai utilisé le framework Ruby on Rails pour pouvoir gèrer ma base de donnée.
 
 # frontend_mobile
 ## Introduction
