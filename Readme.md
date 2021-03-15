@@ -1,6 +1,6 @@
 # Chibre manager
 ## Introduction
-Chibre Manager a été fait a partir de React Native et est stocké sur un serveur web Heroku.
+Chibre Manager a été fait a partir de React Native et et toutes les données sont stocké dans un serveur web.
 J'ai eu beaucoup de plaisir a réaliser ce projet durant la fin de mon stage pratique chez Wavemind.
 J'ai eu environ 88h pour réaliser se projet, soit environ 2 semaines et une journée.
 
@@ -17,7 +17,7 @@ Liens pour télécharger l'APK
 ```bash
 http://gofile.me/6NSuo/AhpWDppRx
 ```
-Version : 1.0.0v
+Version : 1.0.0
 ### Utilisation
 #### Crée une partie
 1. Vous etes dans le menu, c'est ici que vous aller choisir de commencer une nouvelle partie ou d'en reprendre une
