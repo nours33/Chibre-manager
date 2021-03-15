@@ -1,6 +1,6 @@
 # Backend
 ## Introduction
-Vous voici dans le dossier deu serveur web. C'est ici que toute les données sont gérer, c'est aussi ici que notre application va pouvoir communiquer avec notre base de donnée.
+Vous voici dans le dossier du serveur web. C'est ici que toutes les données sont gérées, c'est aussi ici que notre application va pouvoir communiquer avec notre base de données.
 
 
 ## Dependance
@@ -42,11 +42,11 @@ npm install --global yarn
 ```bash
 bash
 ```
-3. Pour pouvoir lancez votre serveur postgresql vous devez écrire la commande suivante
+3. Pour pouvoir lancer votre serveur postgresql vous devez écrire la commande suivante
 ```bash
 sudo service postgresql start
 ```
-4. Vous devez ensuite installer toute les dépendance avec cette commande
+4. Vous devez ensuite installer toutes les dépendances avec cette commande
 ```bash
 yarn install ou npm install
 ```
@@ -54,7 +54,7 @@ yarn install ou npm install
 ```bash
 rails db:create
 ```
-6. Ecrivez la commande suivante pour effectuer les migrations
+6. Écrivez la commande suivante pour effectuer les migrations
 ```bash
 rails db:migration
 ```
