@@ -1,4 +1,7 @@
 # Backend
+## Introduction
+Vous voici dans le dossier deu serveur web. C'est ici que toute les données sont gérer, c'est aussi ici que notre application va pouvoir communiquer avec notre base de donnée.
+
 
 ## Dependance
 ### WSL
