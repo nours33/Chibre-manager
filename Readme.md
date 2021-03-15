@@ -1,20 +1,27 @@
-#Chibre manager
- // explication de  ce que c'est ton projet
+# Chibre manager
+## Introduction
+Chibre Manager a été fait a partir de React Native et est stocké sur un serveur web Heroku.
+J'ai eu beaucoup de plaisir a réaliser ce projet durant la fin de mon stage pratique chez Wavemind.
+J'ai eu environ 88h pour réaliser se projet, soit environ 2 semaines et une journée.
+
 ## Structure de fichers
 ### backend_api
-C'est dans ce dossierr que mon serveur web est stocké, J'ai utilisé le framework Ruby on Rails pour pouvoir gèrer ma base de donnée.
+Dossier contenant toute la partie backend de mon application.
 ### frontend_mobile
-C'est dans ce dossier que mon application mobile React Native est stocké.
+Dossier contenant toute la partie frontend de mon application
 ### Documentation
 C'est ici que sont stocké tous les document relatif a mon ce projet
 ## Application
 ### Introduction
-Je vais vous expliquer comment utiliser l'application
+Je vais vous expliquer comment utiliser l'application Chibre Manager pour pouvoir l'utiliser durant vos parties.
+Chibre Manager a été fait a partir de React Native et tourne sur un serveur Heroku.
+
 ### Information
 Liens pour télécharger l'APK
 ```bash
 http://gofile.me/6NSuo/AhpWDppRx
 ```
+Version : 1.0.0v
 ### Utilisation
 #### Crée une partie
 1. Vous etes dans le menu, c'est ici que vous aller choisir de commencer une nouvelle partie ou d'en reprendre une
