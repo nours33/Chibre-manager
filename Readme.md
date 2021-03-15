@@ -49,5 +49,7 @@ Version : 1.0.0
  <img width="500" src="https://user-images.githubusercontent.com/49155677/110871161-27f25980-82ce-11eb-92ea-be6c6cd792b0.png">
 #### Supprimer une partie
 1. Cliquez sur le bouton reprendre une partie
+
 2. Cliquez ensuite sur la partie que vous souhaitez supprimer
+
 3. Cliquez ensuite sur le bouton supprimer
