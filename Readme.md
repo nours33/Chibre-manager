@@ -12,10 +12,6 @@ Dossier contenant toute la partie frontend de mon application
 ### Documentation
 C'est ici que sont stocké tous les document relatif a mon ce projet
 ## Application
-### Introduction
-Je vais vous expliquer comment utiliser l'application Chibre Manager pour pouvoir l'utiliser durant vos parties.
-Chibre Manager a été fait a partir de React Native et tourne sur un serveur Heroku.
-
 ### Information
 Liens pour télécharger l'APK
 ```bash
