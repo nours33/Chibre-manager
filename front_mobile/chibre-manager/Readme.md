@@ -1,6 +1,7 @@
 # Frontend
 ## Introduction
-Vous voilà dans le dossier de l'application React Native que j'ai conçu. C'est ici que toute l'application mobile a été faite.Je me suis aidé dé d'expo pour pouvoir réaliser ce projet.
+Je vais vous expliquer commment installer et utiliser l'application mobile dans ce ReadMe.
+Cette application a été faite grâce a React Native et Expo.
 
 ## Dependance
 
