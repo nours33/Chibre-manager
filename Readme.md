@@ -1,10 +1,10 @@
 # backend_api
 ## Introduction
-C'est dans le dossierr que mon serveur web est stocké, J'ai utilisé le framework Ruby on Rails pour pouvoir gèrer ma base de donnée.
+C'est dans ce dossierr que mon serveur web est stocké, J'ai utilisé le framework Ruby on Rails pour pouvoir gèrer ma base de donnée.
 
 # frontend_mobile
 ## Introduction
-C'est ici qu'est stocké tous les fichier qui concerne l'application mobile.
+C'est dans ce dossier que mon application mobile React Native est stocké.
 
 # Documentation
 ## Introduction
